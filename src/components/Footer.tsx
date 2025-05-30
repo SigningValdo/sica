@@ -1,0 +1,105 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+const Footer = () => {
+  return (
+    <footer className="bg-black text-white px-4 lg:px-0 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 ">
+        {/* Footer Section 1 */}
+        <div className="lg:pl-[84px] pt-[66px] pb-[18px]">
+          <div className="max-w-[323px]">
+            <h3 className="inputs text-grey">NOUS SOMMES</h3>
+            {/* Logo */}
+            <div className="space-y-4 mt-[44px]">
+              <Image
+                src="/Logo.png"
+                alt="SICA Logo White"
+                width={96}
+                height={40}
+                objectFit="contain"
+                className="h-auto w-auto"
+              />
+              <p className="mb-2">
+                Locataire, propriétaire ou promoteur : nous sommes toujours là
+                pour vous
+              </p>
+              <div>
+                <p className="mb-3">
+                  SICA est un membre partenaire de la CORPIQ
+                </p>
+                <Image
+                  src="/corpiq.svg"
+                  alt="SICA Logo White"
+                  width={96}
+                  height={40}
+                  objectFit="contain"
+                  className="h-auto w-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Footer Section 2 */}
+        <div className="lg:pl-[84px] md:pt-[66px] pb-[18px]">
+          <div className="max-w-[323px]">
+            <h3 className="inputs text-grey">NOS SERVICES</h3>
+            <ul className="space-y-3 mt-[44px]">
+              {Navlinks.map(({ href, title }) => (
+                <li key={href}>
+                  <Link href={href} className=" hover:text-grey">
+                    {title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        {/* Footer Section 3 */}
+        <div className="lg:pl-[84px] md:pt-[66px] pb-[18px]">
+          <div className="max-w-[323px]">
+            <h3 className="inputs text-grey">NOUS CONTACTER</h3>
+            <div className="space-y-3 mt-[44px]">
+              <p>
+                Courriels: <br /> info@sica-quebec.ca
+              </p>
+              <p>
+                Téléphones : <br /> 581-424-4444
+              </p>
+              <p>
+                Adresse : <br /> 420-A rang Saint-Gabriel, Vallée-Jonction, QC
+                G0S 3J0
+              </p>
+              {/* Social Media Links Placeholder */}
+            </div>
+            <div className="mt-[44px]">
+              <Link href="#">Facebook</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="text-center border-t py-6 text-lg">
+        <p> ©2025 Designé et intégré par JFT Art</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+const Navlinks = [
+  {
+    href: "/gestion-immobiliere",
+    title: "Gestion immobilière",
+  },
+  {
+    href: "/entretien-menager",
+    title: "Entretien ménager",
+  },
+  {
+    href: "/about",
+    title: "À propos de SICA",
+  },
+];

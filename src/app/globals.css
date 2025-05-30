@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  .title-1 {
+    @apply text-[64px] font-normal leading-[70px] lg:leading-[96px];
+  }
+  .title-2 {
+    @apply text-[32px] font-normal leading-[70px] lg:leading-[96px];
+  }
+  .title-3 {
+    @apply text-[16px] font-normal leading-[40px];
+  }
+  .inputs {
+    @apply text-[15px] font-normal leading-[40px];
+  }
+  .paragraph-1 {
+    @apply text-[20px] font-normal leading-[30px];
+  }
+  .paragraph-2 {
+    @apply text-[15px] font-normal leading-[18px];
+  }
+  .text-3 {
+    @apply text-[16px] font-normal leading-[24px];
+  }
+  .input-style {
+    @apply text-[20px] font-normal leading-[30px] outline-none border border-black/25 border-b-black px-5 py-6 placeholder:text-[#D9D9D9];
+  }
+}
