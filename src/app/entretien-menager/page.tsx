@@ -1,21 +1,22 @@
 import Button from "@/components/Button";
+import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="px-4 lg:px-0">
-      <section className=" flex flex-col gap-10 lg:gap-0 lg:flex-row">
+    <div className="px-4 xl:px-0">
+      <section className=" flex flex-col gap-10 xl:gap-0 lg:flex-row">
         <div className=" w-full relative">
           <div className="absolute m-auto w-full bg-white h-[32px] top-1/2 z-10"></div>
           <div className="absolute m-auto h-full bg-white w-[32px] left-1/2 z-10"></div>
           <Image
-            src="/home-page-image.png"
+            src="/entretien-menager-page.png"
             alt="Home Image"
             width={625}
             height={787}
             objectFit="contain"
-            className="w-full max-h-[787px]"
+            className="w-full h-full xl:h-[716px]"
           />
         </div>
         <div className="w-full m-auto ">
@@ -37,7 +38,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px]">
+      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
         <div className="w-full m-auto">
           <div className="max-w-[608px] m-auto space-y-[30px]">
             <h1 className="title-1">Ménage RPA</h1>
@@ -76,28 +77,28 @@ const page = () => {
         </div>
         <div className=" w-full">
           <Image
-            src="/chez-sica.png"
+            src="/menage-rpa.png"
             alt="Home Image"
             width={625}
             height={554}
             objectFit="contain"
-            className="w-full max-h-[554px]"
+            className="w-full h-full xl:h-[554px]"
           />
         </div>
       </section>
-      <section className="flex flex-col-reverse gap-10 lg:gap-0 lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px]">
-        <div className=" w-full grid grid-cols-2 gap-4 lg:gap-[32px] min-h-[434px]">
+      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+        <div className=" w-full grid grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
           <Image
-            src="/chez-sica.png"
-            alt="Home Image"
+            src="/menage-commercial.png"
+            alt="menage-commercial"
             width={433}
             height={433}
             objectFit="contain"
             className="w-auto h-full"
           />
           <Image
-            src="/chez-sica.png"
-            alt="Home Image"
+            src="/entretien-menager.png"
+            alt="entretien-menager"
             width={433}
             height={433}
             objectFit="contain"
@@ -140,9 +141,9 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:gap-0 lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px] gap-[30px]">
+      <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px] gap-[30px]">
         <div className="w-full flex flex-col justify-between items-center">
-          <div className=" lg:w-max">
+          <div className=" xl:w-max">
             <div className=" m-auto space-y-[44px]">
               <h1 className="title-1">Ménage multilogements</h1>
 
@@ -179,7 +180,7 @@ const page = () => {
           </div>
           <div className=" w-full">
             <Image
-              src="/chez-sica.png"
+              src="/menage-multilogement.png"
               alt="Home Image"
               width={625}
               height={334}
@@ -189,7 +190,7 @@ const page = () => {
           </div>
         </div>
         <div className="w-full flex flex-col items-center gap-[68px]">
-          <div className=" lg:w-max m-auto">
+          <div className=" xl:w-max m-auto">
             <div className=" m-auto space-y-[44px]">
               <h1 className="title-1">Ménage résidentiel</h1>
 
@@ -226,7 +227,7 @@ const page = () => {
           </div>
           <div className=" w-full">
             <Image
-              src="/chez-sica.png"
+              src="/menage-residentiel.png"
               alt="Home Image"
               width={625}
               height={334}
@@ -236,15 +237,15 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px]">
+      <section className="flex flex-col gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
         <div className=" w-full ">
           <Image
-            src="/chez-sica.png"
+            src="/menage-restaurant.png"
             alt="Home Image"
             width={433}
             height={433}
             objectFit="contain"
-            className="w-full max-h-[554px]"
+            className="w-full h-full xl:max-h-[554px]"
           />
         </div>
         <div className="w-full m-auto">
@@ -283,7 +284,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px]">
+      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
         <div className="w-full m-auto">
           <div className="max-w-[608px] m-auto space-y-[44px]">
             <h1 className="title-1">Ménage après construction</h1>
@@ -321,17 +322,18 @@ const page = () => {
         </div>
         <div className=" w-full ">
           <Image
-            src="/chez-sica.png"
+            src="/menage-construction.png"
             alt="Home Image"
             width={433}
             height={433}
             objectFit="contain"
-            className="w-full max-h-[554px]"
+            className="w-full h-full lg:max-h-[554px]"
           />
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row mt-10 lg:mt-[215px] lg:mx-[44px]  gap-[44px]">
-        <div className="mt-[92px] w-full flex lg:justify-end">
+      <section></section>
+      <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] gap-[44px]">
+        <div className="mt-[92px] w-full flex xl:justify-end">
           <div className=" max-w-[675px] ">
             <div className=" m-auto space-y-[44px] paragraph-1">
               <h1 className="title-1">Prêt à bénéficier de nos services ?</h1>
@@ -350,59 +352,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <form className="w-full p-4 pt-[60px] lg:pl-[44px] lg:pb-[116px] lg:pr-[122px] border border-black space-y-[44px]">
-          <div className="space-y-4">
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className="flex flex-col lg:flex-row w-full">
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <textarea
-                name="Message"
-                id="Message"
-                className="input-style flex"
-                placeholder="Message*"
-              />
-              <label htmlFor="Message">Message</label>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <input
-              id="politique"
-              type="checkbox"
-              // {...register("politique", {
-              //   required:
-              //     "Vous devez accepter la politique de confidentialité",
-              // })}
-              className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
-            />
-            <label htmlFor="politique" className="">
-              {"J'ai lu et "}
-              <span className=" underline">
-                {" j'accepte la politique de confidentialité."}
-              </span>
-            </label>
-          </div>
-          <Button variant="secondary">Envoyer</Button>
-        </form>
+        <Formulaire />
       </section>
     </div>
   );

@@ -4,9 +4,9 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <section className=" flex flex-col lg:flex-row px-4 pt-4 gap-20 2xl:gap-[106px]">
-        <div className="w-full m-auto flex justify-end ">
+    <div className="px-4 xl:px-0">
+      <section className=" flex flex-col lg:flex-row gap-20 xl:gap-[106px]">
+        <div className="w-full xl:m-auto flex xl:justify-end ">
           <div className=" max-w-[625px]">
             <h1 className="title-1">
               Votre tranquillité d’esprit, notre priorité.
@@ -26,73 +26,30 @@ const page = () => {
             width={625}
             height={787}
             objectFit="contain"
-            className="w-full max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px]"
           />
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row container mx-auto mt-[48px]">
-        <div className="py-[65px] px-3">
-          <Image
-            src={"/home-page-image.png"}
-            height={433}
-            width={433}
-            alt="Home Image"
-          />
-          <div className="pl-3 pt-2">
-            <h3 className="title-3 uppercase">Gestion d’immeubles</h3>
-            <p className=" paragraph-2 ">
-              “Finances, location, relation locataire… <br /> on s’occupe de
-              tout.”
-            </p>
+      <section className="grid bg-white md:grid-cols-2 lg:grid-cols-4 mt-[48px] pb-2">
+        {Services.map((service, index) => (
+          <div
+            key={index}
+            className="py-[65px] hover:bg-[#D9D9D9] border-b-[8px] border-white hover:border-b-[8px] hover:border-primary transition-all duration-300 px-3"
+          >
+            <Image
+              src={service.image}
+              height={433}
+              width={433}
+              alt="Home Image"
+            />
+            <div className="pl-3 pt-2">
+              <h3 className="title-3 uppercase">{service.title}</h3>
+              <p className=" paragraph-2 w-[285px] ">{service.description}</p>
+            </div>
           </div>
-        </div>
-        <div className="py-[65px] px-3">
-          <Image
-            src={"/home-page-image.png"}
-            height={433}
-            width={433}
-            alt="Home Image"
-          />
-          <div className="pl-3 pt-2">
-            <h3 className="title-3 uppercase">Gestion d’immeubles</h3>
-            <p className=" paragraph-2 ">
-              “Finances, location, relation locataire… <br /> on s’occupe de
-              tout.”
-            </p>
-          </div>
-        </div>
-        <div className="py-[65px] px-3">
-          <Image
-            src={"/home-page-image.png"}
-            height={433}
-            width={433}
-            alt="Home Image"
-          />
-          <div className="pl-3 pt-2">
-            <h3 className="title-3 uppercase">Gestion d’immeubles</h3>
-            <p className=" paragraph-2 ">
-              “Finances, location, relation locataire… <br /> on s’occupe de
-              tout.”
-            </p>
-          </div>
-        </div>
-        <div className="py-[65px] px-3">
-          <Image
-            src={"/home-page-image.png"}
-            height={433}
-            width={433}
-            alt="Home Image"
-          />
-          <div className="pl-3 pt-2">
-            <h3 className="title-3 uppercase">Gestion d’immeubles</h3>
-            <p className=" paragraph-2 ">
-              “Finances, location, relation locataire… <br /> on s’occupe de
-              tout.”
-            </p>
-          </div>
-        </div>
+        ))}
       </section>
-      <section className="flex flex-col lg:flex-row px-4 gap-10 lg:mt-[215px]">
+      <section className="flex bg-white flex-col lg:flex-row gap-10 lg:mt-10 xl:mt-[215px]">
         <div className=" w-full">
           <Image
             src="/chez-sica.png"
@@ -100,11 +57,11 @@ const page = () => {
             width={625}
             height={787}
             objectFit="contain"
-            className="w-full max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px]"
           />
         </div>
         <div className="w-full m-auto">
-          <div className="max-w-[590px] m-auto space-y-[44px]">
+          <div className="max-w-[590px] xl:m-auto space-y-[44px]">
             <h1 className="title-1">Chez SICA</h1>
 
             {/* Checklist */}
@@ -150,7 +107,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row  my-20 lg:my-0 lg:mt-[217px] lg:mb-[110px] px-4 gap-10 justify-between container max-w-6xl mx-auto">
+      <section className="flex flex-col lg:flex-row my-20 lg:my-0 lg:mt-[217px] lg:mb-[110px] px-4 gap-10 justify-between container max-w-6xl xl:mx-auto">
         <p className=" max-w-[675px] title-2 leading-[42px]">
           Locataire, propriétaire ou promoteur : nous sommes toujours là pour
           vous
@@ -162,3 +119,26 @@ const page = () => {
 };
 
 export default page;
+
+const Services = [
+  {
+    title: "Gestion d’immeubles",
+    description: "Finances, location, relation locataire… on s’occupe de tout.",
+    image: "/gestion-immeuble.png",
+  },
+  {
+    title: "Entretien ménager",
+    description: "Des espaces impeccables, du CPE à l’immeuble à logements.",
+    image: "/entretien-menager.png",
+  },
+  {
+    title: "À propos",
+    description: "Une équipe passionnée, un accompagnement complet.",
+    image: "/about.png",
+  },
+  {
+    title: "Services aux locataires",
+    description: "Un suivi humain, rapide, 24/7",
+    image: "/services-locaux.png",
+  },
+];

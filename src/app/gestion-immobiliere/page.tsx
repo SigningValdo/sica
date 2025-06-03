@@ -1,12 +1,13 @@
 "use client";
 import Button from "@/components/Button";
+import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="pt-20 lg:pt-[117px] px-4 lg:px-0">
-      <section className="lg:mr-[52px]">
+    <div className="pt-20 lg:pt-[117px] px-4 xl:px-0">
+      <section className="xl:mr-[52px]">
         <h1 className="title-1 lg:pl-40">Nous administrons ces blocs</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[32px] mt-[54px]">
           <div className="pt-16 ">
@@ -22,10 +23,10 @@ const page = () => {
           </div>
           <div className="">
             <Image
-              src={"/home-page-image.png"}
+              src={"/logement-haut-gamme.png"}
               height={433}
               width={433}
-              alt="Home Image"
+              alt="logement-haut-gamme"
             />
             <div className="pt-[33px]">
               <h3 className="title-3 uppercase">30 logements haut de gamme</h3>
@@ -37,10 +38,10 @@ const page = () => {
           </div>
           <div className="">
             <Image
-              src={"/home-page-image.png"}
+              src={"/gestion-logement.png"}
               height={433}
               width={433}
-              alt="Home Image"
+              alt="Gestion 6 logements"
             />
             <div className="pt-[33px]">
               <h3 className="title-3 uppercase">Gestion 6 logements</h3>
@@ -53,13 +54,13 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-10 lg:gap-0 mt-10 lg:mt-[270px]">
+      <section className="flex flex-col lg:flex-row gap-10 xl:gap-0 mt-10 lg:mt-[270px]">
         <div className=" w-full">
           <h1 className="max-w-[675px] lg:m-auto mb-20 title-1">
             On optimise, on anticipe et on valorise votre <br /> bien.
           </h1>
           <Image
-            src="/chez-sica.png"
+            src="/valorisation-bien.jpg"
             alt="Home Image"
             width={625}
             height={787}
@@ -80,7 +81,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-10 lg:gap-0 mt-10 lg:mt-[215px] lg:mx-[44px]">
+      <section className="flex flex-col lg:flex-row gap-10 lg:gap-0 mt-10 lg:mt-[215px] xl:mx-[44px]">
         <div className="w-full m-auto">
           <div className="max-w-[608px] lg:m-auto space-y-[44px]">
             <h1 className="title-1">
@@ -123,21 +124,21 @@ const page = () => {
         </div>
         <div className=" w-full grid md:grid-cols-2 gap-[32px]">
           <Image
-            src="/chez-sica.png"
+            src="/location-cession-bail-1.png"
             alt="Home Image"
             width={433}
             height={433}
             objectFit="contain"
           />
           <Image
-            src="/chez-sica.png"
+            src="/location-cession-bail-2.png"
             alt="Home Image"
             width={433}
             height={433}
             objectFit="contain"
           />
           <Image
-            src="/chez-sica.png"
+            src="/location-cession-bail-3.png"
             alt="Home Image"
             width={433}
             height={433}
@@ -145,15 +146,15 @@ const page = () => {
           />
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-10 lg:gap-0 mt-10 lg:mt-[215px]">
+      <section className="flex flex-col-reverse lg:flex-row gap-10 xl:gap-0 mt-10 lg:mt-[215px]">
         <div className=" w-full">
           <Image
-            src="/chez-sica.png"
+            src="/Entretien-maintenance.png"
             alt="Home Image"
             width={625}
             height={554}
             objectFit="contain"
-            className="w-full max-h-[554px]"
+            className="w-full h-full xl:max-h-[554px]"
           />
         </div>
         <div className="w-full m-auto">
@@ -197,119 +198,124 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-10 lg:gap-[30px] lg:mx-[44px] mt-10 lg:mt-[215px]">
-        <div className="w-full flex flex-col gap-10 lg:gap-0 justify-between lg:items-center">
-          <div className=" lg:w-max ">
-            <div className=" lg:m-autospace-y-[44px]">
-              <h1 className="title-1">
-                Service à la clientèle <br />
-                24h/7
-              </h1>
-
-              {/* Checklist */}
-              <div className="paragraph-1">
-                <p className=" max-w-[522px] mt-6">
-                  {
-                    "SICA s’assure que vos locataires soient servis rapidement et que vous restiez informé sans vous occuper des détails :"
-                  }
-                </p>
-                <div className="mt-4">
-                  {[
-                    "Réception des appels et courriels",
-                    "Renouvellement des baux",
-                    "Préparation et envoi des avis",
-                    "Relevés 31",
-                    "Archivage numérique sécurisé des échanges",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <input
-                        id="politique"
-                        type="checkbox"
-                        // {...register("politique", {
-                        //   required:
-                        //     "Vous devez accepter la politique de confidentialité",
-                        // })}
-                        className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
-                      />
-                      <label htmlFor={item} className="">
-                        {item}
-                      </label>
-                      {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className=" w-full">
-            <Image
-              src="/chez-sica.png"
-              alt="Home Image"
-              width={625}
-              height={334}
-              objectFit="contain"
-              className="w-full max-h-[334px]"
-            />
-          </div>
+      <section className="mt-10 lg:mt-[215px]">
+        <div className=" flex justify-end w-full">
+          <div className="h-[12px] bg-primary w-1/2"></div>
         </div>
-        <div className="w-full flex flex-col  gap-10 lg:gap-[96px]">
-          <div className=" lg:w-max lg:m-auto">
-            <div className=" lg:m-autospace-y-[44px]">
-              <h1 className="title-1">
-                Gestion financière et <br /> comptabilité
-              </h1>
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-[30px] xl:mx-[44px] mt-[34px] ">
+          <div className="w-full flex flex-col gap-10 lg:gap-0 justify-between xl:items-center">
+            <div className=" lg:w-max ">
+              <div className=" lg:m-autospace-y-[44px]">
+                <h1 className="title-1">
+                  Service à la clientèle <br />
+                  24h/7
+                </h1>
 
-              {/* Checklist */}
-              <div className="paragraph-1">
-                <p className=" max-w-[522px] mt-6">
-                  {
-                    "SICA prend en charge tous les aspects administratifs et financiers pour vous faire gagner du temps et sécuriser vos revenus :"
-                  }
-                </p>
-                <div className="my-4">
-                  {[
-                    "Réception et dépôt des loyers",
-                    "Production de reçus (incluant paiements en espèces)",
-                    "Recouvrement des arriérés",
-                    "Suivi des revenus/dépenses via logiciel de gestion",
-                    "Vérification des comptes à payer",
-                    "Conciliation bancaire mensuelle",
-                    "États financiers et rapports mensuels",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <input
-                        id="politique"
-                        type="checkbox"
-                        // {...register("politique", {
-                        //   required:
-                        //     "Vous devez accepter la politique de confidentialité",
-                        // })}
-                        className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
-                      />
-                      <label htmlFor={item} className="">
-                        {item}
-                      </label>
-                      {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                    </div>
-                  ))}
+                {/* Checklist */}
+                <div className="paragraph-1">
+                  <p className=" max-w-[522px] mt-6">
+                    {
+                      "SICA s’assure que vos locataires soient servis rapidement et que vous restiez informé sans vous occuper des détails :"
+                    }
+                  </p>
+                  <div className="mt-4">
+                    {[
+                      "Réception des appels et courriels",
+                      "Renouvellement des baux",
+                      "Préparation et envoi des avis",
+                      "Relevés 31",
+                      "Archivage numérique sécurisé des échanges",
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <input
+                          id="politique"
+                          type="checkbox"
+                          // {...register("politique", {
+                          //   required:
+                          //     "Vous devez accepter la politique de confidentialité",
+                          // })}
+                          className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                        />
+                        <label htmlFor={item} className="">
+                          {item}
+                        </label>
+                        {/* <span className="text-gray-700 font-medium">{item}</span> */}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <p>
-                  {
-                    "Travaux de fermeture d’année et vérification par CPA non inclus"
-                  }
-                </p>
               </div>
             </div>
+            <div className=" w-full">
+              <Image
+                src="/service-clientele.png"
+                alt="Home Image"
+                width={625}
+                height={334}
+                objectFit="contain"
+                className="w-full max-h-[334px]"
+              />
+            </div>
           </div>
-          <div className=" w-full">
-            <Image
-              src="/chez-sica.png"
-              alt="Home Image"
-              width={625}
-              height={334}
-              objectFit="contain"
-              className="w-full max-h-[334px]"
-            />
+          <div className="w-full flex flex-col  gap-10 lg:gap-[96px]">
+            <div className=" lg:w-max lg:m-auto">
+              <div className=" lg:m-autospace-y-[44px]">
+                <h1 className="title-1">
+                  Gestion financière et <br /> comptabilité
+                </h1>
+
+                {/* Checklist */}
+                <div className="paragraph-1">
+                  <p className=" max-w-[522px] mt-6">
+                    {
+                      "SICA prend en charge tous les aspects administratifs et financiers pour vous faire gagner du temps et sécuriser vos revenus :"
+                    }
+                  </p>
+                  <div className="my-4">
+                    {[
+                      "Réception et dépôt des loyers",
+                      "Production de reçus (incluant paiements en espèces)",
+                      "Recouvrement des arriérés",
+                      "Suivi des revenus/dépenses via logiciel de gestion",
+                      "Vérification des comptes à payer",
+                      "Conciliation bancaire mensuelle",
+                      "États financiers et rapports mensuels",
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <input
+                          id="politique"
+                          type="checkbox"
+                          // {...register("politique", {
+                          //   required:
+                          //     "Vous devez accepter la politique de confidentialité",
+                          // })}
+                          className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                        />
+                        <label htmlFor={item} className="">
+                          {item}
+                        </label>
+                        {/* <span className="text-gray-700 font-medium">{item}</span> */}
+                      </div>
+                    ))}
+                  </div>
+                  <p>
+                    {
+                      "Travaux de fermeture d’année et vérification par CPA non inclus"
+                    }
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className=" w-full">
+              <Image
+                src="/gestion-financière.png"
+                alt="Home Image"
+                width={625}
+                height={334}
+                objectFit="contain"
+                className="w-full max-h-[334px]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -341,12 +347,12 @@ const page = () => {
         </div>
         <div className="">
           <Image
-            src="/chez-sica.png"
+            src="/sica-benefice.png"
             alt="Home Image"
             width={388}
             height={334}
             objectFit="contain"
-            className="w-full lg:w-auto"
+            className=""
           />
         </div>
       </section>
@@ -375,59 +381,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <form className="w-full p-4 pt-[60px] lg:pl-[44px] lg:pb-[116px] lg:pr-[122px] border border-black space-y-[44px]">
-          <div className="space-y-4">
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className="flex flex-col lg:flex-row w-full">
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <textarea
-                name="Message"
-                id="Message"
-                className="input-style flex"
-                placeholder="Message*"
-              />
-              <label htmlFor="Message">Message</label>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <input
-              id="politique"
-              type="checkbox"
-              // {...register("politique", {
-              //   required:
-              //     "Vous devez accepter la politique de confidentialité",
-              // })}
-              className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
-            />
-            <label htmlFor="politique" className="">
-              {"J'ai lu et "}
-              <span className=" underline">
-                {" j'accepte la politique de confidentialité."}
-              </span>
-            </label>
-          </div>
-          <Button variant="secondary">Envoyer</Button>
-        </form>
+        <Formulaire />
       </section>
     </div>
   );

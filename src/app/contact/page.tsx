@@ -1,11 +1,11 @@
-import Button from "@/components/Button";
+import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <section className="flex">
+    <div className="px-4 lg:px-0">
+      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row">
         <div className="mt-[92px] w-full flex flex-col justify-between items-center">
           <div className="max-w-[522px]">
             <div className=" m-auto space-y-6 paragraph-1">
@@ -25,68 +25,16 @@ const page = () => {
             </div>
           </div>
           <Image
-            src="/chez-sica.png"
-            alt="Home Image"
+            src="/parlons-en.svg"
+            alt="Parlons En"
             width={517}
             height={504}
             className="w-[517px] max-h-[148px]"
           />
         </div>
-        <form className="w-full pt-[60px] pl-[44px] pb-[116px] pr-[122px] border border-black space-y-[44px]">
-          <div className="space-y-4">
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className="flex w-full">
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-              <div className=" w-full flex flex-col gap-4">
-                <label htmlFor="Nom">Nom</label>
-                <input type="text" className="input-style" placeholder="Nom*" />
-              </div>
-            </div>
-            <div className=" flex flex-col gap-4">
-              <label htmlFor="Nom">Nom</label>
-              <input type="text" className="input-style" placeholder="Nom*" />
-            </div>
-            <div className=" flex flex-col gap-4">
-              <textarea
-                name="Message"
-                id="Message"
-                className="input-style flex"
-                placeholder="Message*"
-              />
-              <label htmlFor="Message">Message</label>
-            </div>
-          </div>
-          <div className="flex items-center space-x-3">
-            <input
-              id="politique"
-              type="checkbox"
-              // {...register("politique", {
-              //   required:
-              //     "Vous devez accepter la politique de confidentialité",
-              // })}
-              className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
-            />
-            <label htmlFor="politique" className="">
-              {"J'ai lu et "}
-              <span className=" underline">
-                {" j'accepte la politique de confidentialité."}
-              </span>
-            </label>
-          </div>
-          <Button variant="secondary">Envoyer</Button>
-        </form>
+        <Formulaire />
       </section>
-      <section className="container max-w-7xl m-auto mt-[76px]">
+      <section className="container max-w-7xl m-auto mt-[76px] lg:mx-[44px]">
         <p className="title-2 leading-[42px]">
           Courriels : <br /> info@sica-quebec.ca
         </p>
@@ -97,10 +45,10 @@ const page = () => {
           Notre adresse : 420-A rang Saint-Gabriel, Vallée-Jonction, QC G0S 3J0
         </p>
       </section>
-      <section className="flex mt-[60px] mb-[119px] mx-[44px]">
+      <section className="flex mt-[60px] mb-[119px] lg:mx-[44px]">
         <Image
-          src="/chez-sica.png"
-          alt="Home Image"
+          src="/map.png"
+          alt="Map"
           width={517}
           height={504}
           className="w-full max-h-[539px]"

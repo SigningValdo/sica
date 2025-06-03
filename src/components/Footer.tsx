@@ -6,10 +6,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white px-4 lg:px-0 ">
-      <div className="grid grid-cols-1 md:grid-cols-3 ">
+    <footer className="bg-black text-white px-4 -z-10 lg:px-0 relative">
+      <div className=" hidden lg:grid absolute  grid-cols-3 top-0 left-0 w-full h-full pointer-events-none">
+        <div className="border border-t-0"></div>
+        <div className="border border-t-0 border-l-0"></div>
+        <div className="border border-t-0 border-l-0"></div>
+      </div>
+      <div className="absolute top-[130px] bg-white left-0 w-full h-[1px] hidden lg:block"></div>
+
+      <div className="grid  grid-cols-1 md:grid-cols-3 md:gap-5 lg:gap-0 ">
         {/* Footer Section 1 */}
-        <div className="lg:pl-[84px] pt-[66px] pb-[18px]">
+        <div className="lg:pl-[84px]  pt-[66px] pb-[18px]">
           <div className="max-w-[323px]">
             <h3 className="inputs text-grey">NOUS SOMMES</h3>
             {/* Logo */}
@@ -43,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Footer Section 2 */}
-        <div className="lg:pl-[84px] md:pt-[66px] pb-[18px]">
+        <div className="lg:pl-[84px] md:pt-[66px] pb-[18px] ">
           <div className="max-w-[323px]">
             <h3 className="inputs text-grey">NOS SERVICES</h3>
             <ul className="space-y-3 mt-[44px]">
