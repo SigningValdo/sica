@@ -1,26 +1,53 @@
+"use client";
 import Button from "@/components/Button";
 import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
-
+import { motion } from "framer-motion";
 const page = () => {
   return (
     <div>
-      <section className=" bg-black flex flex-col gap-10 lg:flex-row lg:gap-0 pt-[32px] lg:pt-0  lg:mt-[32px]">
+      <section className=" bg-[#1C1C1C] flex flex-col gap-10 lg:flex-row lg:gap-0 pt-[32px] lg:pt-0  lg:mt-[32px]">
         <div className="w-full xl:m-auto p-4 xl:p-0 ">
           <div className=" max-w-[625px] lg:m-auto space-y-[64px]">
-            <h1 className=" title-1 text-primary">Notre mission</h1>
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className=" title-1 text-primary"
+            >
+              Notre mission
+            </motion.h1>
             <div className=" max-w-[522px] space-y-6 paragraph-1">
-              <h2 className="text-white">
+              <motion.h2
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="text-white"
+              >
                 Chez SICA, notre mission est simple :offrir la tranquillité
                 d’esprit aux propriétaires immobiliers, en leur proposant une
                 gestion rigoureuse, humaine et complète de leurs immeubles.
-              </h2>
-              <p className=" text-primary">
+              </motion.h2>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className=" text-primary"
+              >
                 Nous savons à quel point votre investissement est important,
                 c’est pourquoi nous mettons tout en œuvre pour le faire
                 prospérer.
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
@@ -28,6 +55,8 @@ const page = () => {
           <Image
             src="/notre-mission.png"
             alt="Notre Mission"
+            quality={100} // qualité maximale
+            priority
             width={625}
             height={787}
             objectFit="contain"
@@ -38,16 +67,41 @@ const page = () => {
       <section className=" flex flex-col gap-10 lg:flex-row lg:gap-0 mt-10 lg:mt-20 xl:mt-[215px] px-4 xl:px-0 xl:mx-[44px]">
         <div className="w-full lg:m-auto ">
           <div className=" max-w-[625px] lg:m-auto">
-            <h1 className=" title-1 ">Notre approche</h1>
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className=" title-1 "
+            >
+              Notre approche
+            </motion.h1>
             <div className=" max-w-[522px] space-y-6 paragraph-1 mt-6">
-              <p>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+              >
                 Nous adoptons une approche clé en main : du développement à la
                 gestion quotidienne, en passant par l’entretien ménager et le
                 soutien aux locataires. Notre équipe s’occupe de tout.
-              </p>
-              <h2 className="title-2 leading-[42px]">
+              </motion.p>
+              <motion.h2
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-2 leading-[42px]"
+              >
                 Ce qui nous distingue :
-              </h2>
+              </motion.h2>
               <div className="paragraph-1">
                 <div className="my-4">
                   {[
@@ -55,7 +109,16 @@ const page = () => {
                     "Des outils numériques pour un suivi transparent",
                     "Un accompagnement réactif et professionnel",
                   ].map((item, index) => (
-                    <div key={index} className="flex  items-center space-x-3">
+                    <motion.div
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      key={index}
+                      className="flex  items-center space-x-3"
+                    >
                       <Image
                         src="/check.svg"
                         alt="check"
@@ -64,20 +127,31 @@ const page = () => {
                         objectFit="contain"
                       />
                       <span>{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
-            <Button variant="secondary" className="mt-[60px]">
-              Demander une soumission
-            </Button>
+            <motion.div
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+            >
+              <Button variant="secondary" className="mt-[60px]">
+                Demander une soumission
+              </Button>
+            </motion.div>
           </div>
         </div>
         <div className=" w-full">
           <Image
             src="/notre-approche.png"
             alt="Notre Approche"
+            quality={100} // qualité maximale
+            priority
             width={625}
             height={787}
             objectFit="contain"
@@ -90,6 +164,8 @@ const page = () => {
           <Image
             src="/nos-valeurs-1.png"
             alt="Nos Valeurs"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
@@ -98,6 +174,8 @@ const page = () => {
           <Image
             src="/nos-valeurs-2.png"
             alt="Nos Valeurs"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
@@ -106,30 +184,78 @@ const page = () => {
         </div>
         <div className="w-full lg:m-auto">
           <div className="max-w-[608px] lg:m-auto space-y-[44px]">
-            <h1 className="title-1">Nos valeurs</h1>
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-1"
+            >
+              Nos valeurs
+            </motion.h1>
 
             {/* Checklist */}
             <div className="paragraph-1">
               <div>
-                <p>Nous croyons que la réussite en immobilier passe par :</p>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                >
+                  Nous croyons que la réussite en immobilier passe par :
+                </motion.p>
 
-                <p className="mt-6">
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className="mt-6"
+                >
                   <span className="text-primary"> Transparence :</span> Chaque
                   décision est prise en collaboration avec vous
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                >
                   <span className="text-primary">Efficacité :</span> Réponses
                   rapides et exécution fiable
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                >
                   <span className="text-primary">Professionnalisme :</span>{" "}
                   Respect des normes et excellence opérationnelle
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                >
                   {" "}
                   <span className="text-primary">Respect humain :</span> De vos
                   locataires, de vos immeubles, et de vos priorités
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>
@@ -139,15 +265,33 @@ const page = () => {
         <div className="w-full flex flex-col justify-between lg:items-center gap-[68px] lg:gap-0">
           <div className=" xl:w-max">
             <div className=" m-auto space-y-[44px]">
-              <h1 className="title-1">Notre équipe</h1>
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Notre équipe
+              </motion.h1>
 
               {/* Checklist */}
               <div className="paragraph-1">
-                <p className=" max-w-[522px] mt-6">
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className=" max-w-[522px] mt-6"
+                >
                   {
                     "SICA, c’est bien plus qu’une entreprise : c’est une famille de professionnels passionnés, qui évolue dans le domaine immobilier depuis plusieurs années. Chacun de nos gestionnaires, agents et techniciens est formé pour vous offrir un service impeccable, avec une attention particulière aux détails."
                   }
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>
@@ -155,6 +299,8 @@ const page = () => {
             <Image
               src="/notre-equipe.svg"
               alt="Notre Equipe"
+              quality={100} // qualité maximale
+              priority
               width={625}
               height={334}
               // objectFit="contain"
@@ -165,7 +311,17 @@ const page = () => {
         <div className="w-full flex flex-col lg:items-center gap-[68px]">
           <div className=" xl:w-max xl:m-auto">
             <div className=" lg:m-auto space-y-[44px]">
-              <h1 className="title-1">Pourquoi nous choisir ?</h1>
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Pourquoi nous choisir ?
+              </motion.h1>
 
               {/* Checklist */}
               <div className="paragraph-1">
@@ -175,23 +331,42 @@ const page = () => {
                     "Vous manquez de temps pour gérer les appels, les entretiens, les urgences ?",
                     "Vous cherchez un partenaire fiable, transparent et à l’écoute ?",
                   ].map((item, index) => (
-                    <div key={index} className="flex  items-center space-x-3">
+                    <motion.div
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      key={index}
+                      className="flex  items-center space-x-3"
+                    >
                       <Image
                         src="/check.svg"
                         alt="check"
+                        quality={100} // qualité maximale
+                        priority
                         width={20}
                         height={20}
                         objectFit="contain"
                       />
                       <span>{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-                <p className="mt-5">
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className="mt-5"
+                >
                   SICA est la solution. <br />
                   Nous prenons en charge votre immeuble comme si c’était le
                   nôtre.
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>
@@ -199,6 +374,8 @@ const page = () => {
             <Image
               src="/nous-choisir.png"
               alt="Nous Choisir"
+              quality={100} // qualité maximale
+              priority
               width={625}
               height={434}
               objectFit="contain"
@@ -211,17 +388,36 @@ const page = () => {
         <div className="lg:mt-[92px] w-full flex flex-col justify-between gap-10 lg:items-center lg:gap-0">
           <div className="max-w-[522px]">
             <div className=" m-auto space-y-[44px] paragraph-1">
-              <h1 className="title-1">Demandez une soumission</h1>
-              <p>
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Demandez une soumission
+              </motion.h1>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+              >
                 Vous souhaitez recevoir une évaluation gratuite de vos besoins
                 en gestion ou en entretien ? <br />
                 Cliquez ici pour demander une soumission.
-              </p>
+              </motion.p>
             </div>
           </div>
           <Image
             src="/demande-soumission.png"
             alt="Home Image"
+            quality={100} // qualité maximale
+            priority
             width={625}
             height={504}
             className="w-full h-[504px]"

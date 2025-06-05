@@ -8,11 +8,11 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white px-4 -z-10 lg:px-0 relative">
       <div className=" hidden lg:grid absolute  grid-cols-3 top-0 left-0 w-full h-full pointer-events-none">
-        <div className="border border-t-0"></div>
-        <div className="border border-t-0 border-l-0"></div>
-        <div className="border border-t-0 border-l-0"></div>
+        <div className="border border-grey border-t-0"></div>
+        <div className="border border-grey border-t-0 border-l-0"></div>
+        <div className="border border-grey border-t-0 border-l-0"></div>
       </div>
-      <div className="absolute top-[130px] bg-white left-0 w-full h-[1px] hidden lg:block"></div>
+      <div className="absolute top-[130px] bg-grey left-0 w-full h-[1px] hidden lg:block"></div>
 
       <div className="grid  grid-cols-1 md:grid-cols-3 md:gap-5 lg:gap-0 ">
         {/* Footer Section 1 */}
@@ -87,7 +87,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center border-t py-6 text-lg">
+      <div className="text-center border-t border-grey py-6 text-lg">
         <p> ©2025 Designé et intégré par JFT Art</p>
       </div>
     </footer>

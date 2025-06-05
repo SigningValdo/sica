@@ -1,7 +1,9 @@
+"use client";
 import Button from "@/components/Button";
 import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 const page = () => {
   return (
@@ -13,63 +15,137 @@ const page = () => {
           <Image
             src="/entretien-menager-page.png"
             alt="Home Image"
+            quality={100} // qualité maximale
+            priority
             width={625}
             height={787}
             objectFit="contain"
             className="w-full h-full xl:h-[716px]"
           />
         </div>
-        <div className="w-full m-auto ">
-          <div className=" max-w-[625px] m-auto space-y-[64px]">
-            <h1 className=" title-1">Entretien ménager</h1>
+        <div className="w-full lg:m-auto ">
+          <div className=" max-w-[625px] lg:m-auto space-y-[64px]">
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className=" title-1"
+            >
+              Entretien ménager
+            </motion.h1>
             <div className=" space-y-6">
-              <h2 className="title-2 leading-[42px]">
+              <motion.h2
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-2 leading-[42px]"
+              >
                 Un service de propreté adapté à chaque environnement
-              </h2>
-              <p className="paragraph-1">
+              </motion.h2>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="paragraph-1"
+              >
                 Chez SICA, la propreté ne se résume pas au nettoyage :elle
                 contribue à la santé, au confort et à l’image de vos espaces.
                 Nous offrons un service sur mesure, effectué par des
                 professionnels expérimentés, avec des standards rigoureux en
                 hygiène, sécurité et respect des lieux.
-              </p>
+              </motion.p>
             </div>
-            <Button variant="secondary">Demander une soumission</Button>
+            <motion.div
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+            >
+              <Button variant="secondary">Demander une soumission</Button>
+            </motion.div>
           </div>
         </div>
       </section>
       <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
-        <div className="w-full m-auto">
-          <div className="max-w-[608px] m-auto space-y-[30px]">
-            <h1 className="title-1">Ménage RPA</h1>
-            <h2 className="title-2">(Résidences pour aînés)</h2>
+        <div className="w-full lg:m-auto">
+          <div className="max-w-[608px] lg:m-auto space-y-[30px]">
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-1"
+            >
+              Ménage RPA
+            </motion.h1>
+            <motion.h2
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-2"
+            >
+              (Résidences pour aînés)
+            </motion.h2>
 
             {/* Checklist */}
             <div className="paragraph-1">
-              <p className=" max-w-[522px] mt-6">
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className=" max-w-[522px] mt-6"
+              >
                 {"Un environnement propre et sécuritaire pour les aînés :"}
-              </p>
+              </motion.p>
               <div className="mt-4 max-w-[590px]">
                 {[
                   "Dépoussiérage, balayage, lavage des sols",
                   "Désinfection des surfaces et zones communes",
                   "Offres personnalisées selon les besoins physiques des résidents",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <input
-                      id="politique"
-                      type="checkbox"
-                      // {...register("politique", {
-                      //   required:
-                      //     "Vous devez accepter la politique de confidentialité",
-                      // })}
-                      className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                  <motion.div
+                    initial={{ y: "100px", opacity: 0 }}
+                    whileInView={{ y: "0px", opacity: 1 }}
+                    transition={{
+                      // type: "spring",
+                      offset: 300,
+                    }}
+                    key={index}
+                    className="flex items-start space-x-3"
+                  >
+                    <Image
+                      src="/list.svg"
+                      alt="list"
+                      quality={100} // qualité maximale
+                      priority
+                      width={16}
+                      height={16}
+                      className="mt-2"
                     />
                     <label htmlFor={item} className="">
                       {item}
                     </label>
                     {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -79,6 +155,8 @@ const page = () => {
           <Image
             src="/menage-rpa.png"
             alt="Home Image"
+            quality={100} // qualité maximale
+            priority
             width={625}
             height={554}
             objectFit="contain"
@@ -91,6 +169,8 @@ const page = () => {
           <Image
             src="/menage-commercial.png"
             alt="menage-commercial"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
@@ -99,42 +179,71 @@ const page = () => {
           <Image
             src="/entretien-menager.png"
             alt="entretien-menager"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
             className="w-auto h-full"
           />
         </div>
-        <div className="w-full m-auto">
-          <div className="max-w-[608px] m-auto space-y-[44px]">
-            <h1 className="title-1">Ménage commercial</h1>
+        <div className="w-full lg:m-auto">
+          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-1"
+            >
+              Ménage commercial
+            </motion.h1>
 
             {/* Checklist */}
             <div className="paragraph-1">
-              <p className=" max-w-[522px] mt-6">
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className=" max-w-[522px] mt-6"
+              >
                 {"Pour les entreprises, bureaux et espaces professionnels :"}
-              </p>
+              </motion.p>
               <div className="mt-4">
                 {[
                   "Dépoussiérage, désinfection, gestion des déchets",
                   "Lavage des vitres, planchers, surfaces communes",
                   "Amélioration de la productivité et de l’image de marque",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <input
-                      id="politique"
-                      type="checkbox"
-                      // {...register("politique", {
-                      //   required:
-                      //     "Vous devez accepter la politique de confidentialité",
-                      // })}
-                      className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                  <motion.div
+                    initial={{ y: "100px", opacity: 0 }}
+                    whileInView={{ y: "0px", opacity: 1 }}
+                    transition={{
+                      // type: "spring",
+                      offset: 300,
+                    }}
+                    key={index}
+                    className="flex items-start space-x-3"
+                  >
+                    <Image
+                      src="/list.svg"
+                      alt="list"
+                      quality={100} // qualité maximale
+                      priority
+                      width={16}
+                      height={16}
+                      className="mt-2"
                     />
                     <label htmlFor={item} className="">
                       {item}
                     </label>
                     {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -142,37 +251,64 @@ const page = () => {
         </div>
       </section>
       <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px] gap-[30px]">
-        <div className="w-full flex flex-col justify-between items-center">
+        <div className="w-full flex flex-col justify-between gap-[68px] lg:gap-0 lg:items-center">
           <div className=" xl:w-max">
-            <div className=" m-auto space-y-[44px]">
-              <h1 className="title-1">Ménage multilogements</h1>
+            <div className=" lg:m-auto space-y-[44px]">
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Ménage multilogements
+              </motion.h1>
 
               {/* Checklist */}
               <div className="paragraph-1">
-                <p className=" max-w-[522px] mt-6">
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className=" max-w-[522px] mt-6"
+                >
                   {"Entretien complet des parties communes :"}
-                </p>
+                </motion.p>
                 <div className="mt-4">
                   {[
                     "Entrées, couloirs, escaliers, ascenseurs",
                     "Espaces extérieurs : stationnement, rampes",
                     "Organisation et propreté pour le confort des résidents",
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <input
-                        id="politique"
-                        type="checkbox"
-                        // {...register("politique", {
-                        //   required:
-                        //     "Vous devez accepter la politique de confidentialité",
-                        // })}
-                        className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                    <motion.div
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      key={index}
+                      className="flex items-start space-x-3"
+                    >
+                      <Image
+                        src="/list.svg"
+                        alt="list"
+                        quality={100} // qualité maximale
+                        priority
+                        width={16}
+                        height={16}
+                        className="mt-2"
                       />
                       <label htmlFor={item} className="">
                         {item}
                       </label>
                       {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -182,6 +318,8 @@ const page = () => {
             <Image
               src="/menage-multilogement.png"
               alt="Home Image"
+              quality={100} // qualité maximale
+              priority
               width={625}
               height={334}
               objectFit="contain"
@@ -189,37 +327,64 @@ const page = () => {
             />
           </div>
         </div>
-        <div className="w-full flex flex-col items-center gap-[68px]">
-          <div className=" xl:w-max m-auto">
-            <div className=" m-auto space-y-[44px]">
-              <h1 className="title-1">Ménage résidentiel</h1>
+        <div className="w-full flex flex-col lg:items-center gap-[68px]">
+          <div className=" xl:w-max lg:m-auto">
+            <div className=" lg:m-auto space-y-[44px]">
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Ménage résidentiel
+              </motion.h1>
 
               {/* Checklist */}
               <div className="paragraph-1">
-                <p className=" max-w-[522px] mt-6">
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className=" max-w-[522px] mt-6"
+                >
                   {"Un service personnalisé, selon vos besoins :"}
-                </p>
+                </motion.p>
                 <div className="my-4">
                   {[
                     "Nettoyage des pièces, salles d’eau, cuisine",
                     "Balayage, dépoussiérage, désinfection",
                     "Gestion des ordures, tri, rangement",
                   ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <input
-                        id="politique"
-                        type="checkbox"
-                        // {...register("politique", {
-                        //   required:
-                        //     "Vous devez accepter la politique de confidentialité",
-                        // })}
-                        className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                    <motion.div
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      key={index}
+                      className="flex items-start space-x-3"
+                    >
+                      <Image
+                        src="/list.svg"
+                        alt="list"
+                        quality={100} // qualité maximale
+                        priority
+                        width={16}
+                        height={16}
+                        className="mt-2"
                       />
                       <label htmlFor={item} className="">
                         {item}
                       </label>
                       {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -229,6 +394,8 @@ const page = () => {
             <Image
               src="/menage-residentiel.png"
               alt="Home Image"
+              quality={100} // qualité maximale
+              priority
               width={625}
               height={334}
               objectFit="contain"
@@ -237,11 +404,13 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
         <div className=" w-full ">
           <Image
             src="/menage-restaurant.png"
             alt="Home Image"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
@@ -249,35 +418,62 @@ const page = () => {
           />
         </div>
         <div className="w-full m-auto">
-          <div className="max-w-[608px] m-auto space-y-[44px]">
-            <h1 className="title-1">Ménage pour restaurants</h1>
+          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-1"
+            >
+              Ménage pour restaurants
+            </motion.h1>
 
             {/* Checklist */}
             <div className="paragraph-1">
-              <p className=" max-w-[522px] mt-6">
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className=" max-w-[522px] mt-6"
+              >
                 {"Respect strict des normes d’hygiène alimentaire :"}
-              </p>
+              </motion.p>
               <div className="mt-4">
                 {[
                   "Nettoyage de cuisines, aires de préparation",
                   "Désinfection des surfaces, équipements et zones sensibles",
                   "Entretien des salles à manger et espaces clients",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <input
-                      id="politique"
-                      type="checkbox"
-                      // {...register("politique", {
-                      //   required:
-                      //     "Vous devez accepter la politique de confidentialité",
-                      // })}
-                      className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                  <motion.div
+                    initial={{ y: "100px", opacity: 0 }}
+                    whileInView={{ y: "0px", opacity: 1 }}
+                    transition={{
+                      // type: "spring",
+                      offset: 300,
+                    }}
+                    key={index}
+                    className="flex items-start space-x-3"
+                  >
+                    <Image
+                      src="/list.svg"
+                      alt="list"
+                      quality={100} // qualité maximale
+                      priority
+                      width={16}
+                      height={16}
+                      className="mt-2"
                     />
                     <label htmlFor={item} className="">
                       {item}
                     </label>
                     {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -286,35 +482,62 @@ const page = () => {
       </section>
       <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
         <div className="w-full m-auto">
-          <div className="max-w-[608px] m-auto space-y-[44px]">
-            <h1 className="title-1">Ménage après construction</h1>
+          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
+            <motion.h1
+              initial={{ y: "100px", opacity: 0 }}
+              whileInView={{ y: "0px", opacity: 1 }}
+              transition={{
+                // type: "spring",
+                offset: 300,
+              }}
+              className="title-1"
+            >
+              Ménage après construction
+            </motion.h1>
 
             {/* Checklist */}
             <div className="paragraph-1">
-              <p className=" max-w-[522px] mt-6">
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className=" max-w-[522px] mt-6"
+              >
                 {"Remise à neuf post-travaux :"}
-              </p>
+              </motion.p>
               <div className="mt-4">
                 {[
                   "Élimination des débris, poussières et éclaboussures",
                   "Nettoyage approfondi de toutes les surfaces",
                   "Lavage des vitres, planchers, lustrage final",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <input
-                      id="politique"
-                      type="checkbox"
-                      // {...register("politique", {
-                      //   required:
-                      //     "Vous devez accepter la politique de confidentialité",
-                      // })}
-                      className={`h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded`}
+                  <motion.div
+                    initial={{ y: "100px", opacity: 0 }}
+                    whileInView={{ y: "0px", opacity: 1 }}
+                    transition={{
+                      // type: "spring",
+                      offset: 300,
+                    }}
+                    key={index}
+                    className="flex items-start space-x-3"
+                  >
+                    <Image
+                      src="/list.svg"
+                      alt="list"
+                      quality={100} // qualité maximale
+                      priority
+                      width={16}
+                      height={16}
+                      className="mt-2"
                     />
                     <label htmlFor={item} className="">
                       {item}
                     </label>
                     {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -324,6 +547,8 @@ const page = () => {
           <Image
             src="/menage-construction.png"
             alt="Home Image"
+            quality={100} // qualité maximale
+            priority
             width={433}
             height={433}
             objectFit="contain"
@@ -336,19 +561,43 @@ const page = () => {
         <div className="mt-[92px] w-full flex xl:justify-end">
           <div className=" max-w-[675px] ">
             <div className=" m-auto space-y-[44px] paragraph-1">
-              <h1 className="title-1">Prêt à bénéficier de nos services ?</h1>
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1"
+              >
+                Prêt à bénéficier de nos services ?
+              </motion.h1>
 
               {/* Checklist */}
-              <p>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+              >
                 Un espace propre, c’est plus de bien-être, de sécurité et de
                 valeur pour votre immeuble ou votre entreprise. <br /> <br />{" "}
                 Contactez-nous pour une évaluation gratuite de vos besoins.
-              </p>
-              <p>
+              </motion.p>
+              <motion.p
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+              >
                 {
                   "Locataire, propriétaire ou promoteur : nous sommes toujours là pour vous"
                 }
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
