@@ -14,9 +14,10 @@ L.Icon.Default.mergeOptions({
 });
 
 const Map = () => {
+  const position: [number, number] = [46.382528, -70.932957];
   return (
     <MapContainer
-      center={[3.848, 11.5021]}
+      center={position}
       zoom={13}
       style={{ height: "400px", width: "100%" }}
       scrollWheelZoom={true}
@@ -25,8 +26,8 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[3.848, 11.5021]}>
-        <Popup>Yaoundé, Cameroun</Popup>
+      <Marker position={position}>
+        <Popup>420-A rang Saint-Gabriel, Vallée-Jonction, QC G0S 3J0</Popup>
       </Marker>
     </MapContainer>
   );

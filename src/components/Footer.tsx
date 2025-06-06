@@ -6,7 +6,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white px-4 -z-10 lg:px-0 relative">
+    <footer className="bg-black text-white px-4 lg:px-0 relative">
       <div className=" hidden lg:grid absolute  grid-cols-3 top-0 left-0 w-full h-full pointer-events-none">
         <div className="border border-grey border-t-0"></div>
         <div className="border border-grey border-t-0 border-l-0"></div>
@@ -56,7 +56,7 @@ const Footer = () => {
             <ul className="space-y-3 mt-[44px]">
               {Navlinks.map(({ href, title }) => (
                 <li key={href}>
-                  <Link href={href} className=" hover:text-grey">
+                  <Link href={href} className=" hover:text-primary">
                     {title}
                   </Link>
                 </li>

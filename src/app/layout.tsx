@@ -30,7 +30,6 @@ export default function RootLayout({
         <div className=" fixed top-0 z-[9999] left-0 right-0">
           <Header />
         </div>
-
         <div className=" mt-[80px] lg:mt-[140px]">{children}</div>
         <Footer />
       </body>

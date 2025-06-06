@@ -152,15 +152,15 @@ const page = () => {
             alt="Notre Approche"
             quality={100} // qualité maximale
             priority
-            width={625}
-            height={787}
+            width={899}
+            height={558}
             objectFit="contain"
-            className="w-full lg:h-[558px]"
+            className="w-full h-full lg:h-[558px]"
           />
         </div>
       </section>
       <section className="flex flex-col-reverse gap-10 lg:flex-row xl:gap-0 mt-10 lg:mt-[215px] px-4 xl:px-0 xl:mx-[44px]">
-        <div className=" w-full grid grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
+        <div className=" w-full grid lg:grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
           <Image
             src="/nos-valeurs-1.png"
             alt="Nos Valeurs"
@@ -169,7 +169,7 @@ const page = () => {
             width={433}
             height={433}
             objectFit="contain"
-            className="w-auto h-full"
+            className="w-full lg:w-auto h-full"
           />
           <Image
             src="/nos-valeurs-2.png"
@@ -179,7 +179,7 @@ const page = () => {
             width={433}
             height={433}
             objectFit="contain"
-            className="w-auto h-full"
+            className="w-full lg:w-auto h-full"
           />
         </div>
         <div className="w-full lg:m-auto">
@@ -384,8 +384,8 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-0 px-4 lg:px-0">
-        <div className="lg:mt-[92px] w-full flex flex-col justify-between gap-10 lg:items-center lg:gap-0">
+      <section className=" relative flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-0 px-4 lg:px-0">
+        <div className=" lg:mt-[92px] w-full flex flex-col justify-between gap-10 lg:items-center lg:gap-0">
           <div className="max-w-[522px]">
             <div className=" m-auto space-y-[44px] paragraph-1">
               <motion.h1
@@ -413,16 +413,16 @@ const page = () => {
               </motion.p>
             </div>
           </div>
-          <Image
-            src="/demande-soumission.png"
-            alt="Home Image"
-            quality={100} // qualité maximale
-            priority
-            width={625}
-            height={504}
-            className="w-full h-[504px]"
-          />
         </div>
+        <Image
+          src="/demande-soumission.png"
+          alt="Home Image"
+          quality={100} // qualité maximale
+          priority
+          width={625}
+          height={504}
+          className="w-full h-full -z-10 hidden lg:block max-h-[504px] absolute bottom-0 left-0"
+        />
         <Formulaire />
       </section>
     </div>

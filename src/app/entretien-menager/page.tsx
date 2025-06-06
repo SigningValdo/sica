@@ -10,8 +10,8 @@ const page = () => {
     <div className="px-4 xl:px-0">
       <section className=" flex flex-col gap-10 xl:gap-0 lg:flex-row">
         <div className=" w-full relative">
-          <div className="absolute m-auto w-full bg-white h-[32px] top-1/2 z-10"></div>
-          <div className="absolute m-auto h-full bg-white w-[32px] left-1/2 z-10"></div>
+          <div className="hidden lg:block absolute m-auto w-full bg-white h-[32px] top-1/2 z-10"></div>
+          <div className="hidden lg:block absolute m-auto h-full bg-white w-[32px] left-1/2 z-10"></div>
           <Image
             src="/entretien-menager-page.png"
             alt="Home Image"
@@ -165,7 +165,7 @@ const page = () => {
         </div>
       </section>
       <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
-        <div className=" w-full grid grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
+        <div className=" w-full grid lg:grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
           <Image
             src="/menage-commercial.png"
             alt="menage-commercial"
@@ -174,7 +174,7 @@ const page = () => {
             width={433}
             height={433}
             objectFit="contain"
-            className="w-auto h-full"
+            className="w-full lg:w-auto h-full"
           />
           <Image
             src="/entretien-menager.png"
@@ -184,7 +184,7 @@ const page = () => {
             width={433}
             height={433}
             objectFit="contain"
-            className="w-auto h-full"
+            className="w-full lg:w-auto h-full"
           />
         </div>
         <div className="w-full lg:m-auto">
