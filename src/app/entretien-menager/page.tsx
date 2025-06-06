@@ -556,7 +556,60 @@ const page = () => {
           />
         </div>
       </section>
-      <section></section>
+      <section className="flex flex-col lg:flex-row mt-10 lg:mt-[215px]   gap-4">
+        <div className=" w-full">
+          <div className=" lg:m-auto lg:w-max space-y-[70px]">
+            <h1 className="title-1 text-primary">Méthodologie SICA</h1>
+            <Image
+              quality={100}
+              priority
+              src="/methodologie-sica.svg"
+              alt="Home Image"
+              width={388}
+              height={334}
+              objectFit="contain"
+              className=""
+            />
+          </div>
+          <div className="h-[12px] bg-primary w-full"></div>
+        </div>
+        <motion.div className="w-full">
+          {/* Checklist */}
+          <div className=" max-w-[555px] lg:m-auto paragraph-1">
+            <div className="mt-4 space-y-4">
+              {[
+                "Produits professionnels adaptés à chaque espace",
+                "Équipe formée, fiable et encadrée",
+                "Souci du détail et respect des normes de sécurité",
+                "Flexibilité des horaires selon vos disponibilités",
+              ].map((item, index) => (
+                <motion.div
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  key={index}
+                  className="flex items-start space-x-3"
+                >
+                  <Image
+                    quality={100}
+                    priority
+                    src="/check.svg"
+                    alt="check"
+                    width={20}
+                    height={20}
+                    objectFit="contain"
+                    className="mt-2"
+                  />
+                  <span>{item}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
       <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] gap-[44px]">
         <div className="mt-[92px] w-full flex xl:justify-end">
           <div className=" max-w-[675px] ">
