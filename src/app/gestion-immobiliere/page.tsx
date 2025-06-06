@@ -4,8 +4,22 @@ import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useRef } from "react";
+import type { Swiper as SwiperType } from "swiper";
 
-const page = () => {
+const Page = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(1);
+
+  useEffect(() => {
+    if (!swiperRef.current) return;
+
+    swiperRef.current.on("realIndexChange", (s: SwiperType) => {
+      setCurrentIndex(s.realIndex + 1);
+    });
+  }, []);
   return (
     <div className="pt-20 lg:pt-[117px] px-4 xl:px-0">
       <section className="xl:mr-[52px]">
@@ -20,50 +34,9 @@ const page = () => {
         >
           Nous administrons ces blocs
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[32px] mt-[54px]">
-          <div className="pt-16 ">
-            <motion.p
-              initial={{ y: "100px", opacity: 0 }}
-              whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
-              className="max-w-[285px] paragraph-1 m-auto"
-            >
-              {
-                " Chez SICA, nous sommes bien plus qu'une équipe : nous sommes une famille passionnée et expérimentée, en constante expansion,dévouée à aider nos client à gérer et développer leur parc immobilier. Rejoignez-nous dès aujourd'hui !"
-              }
-            </motion.p>
-          </div>
-          <div className="lg:flex hidden flex-col pt-10 gap-10">
-            <div className="flex flex-col items-center justify-center gap-5">
-              <Button variant="secondary">Suivant</Button>
-              <Button variant="secondary">Précédent</Button>
-            </div>
-            <p className="-ml-28 text-center">23</p>
-          </div>
-          <div className="">
-            <Image
-              src={"/logement-haut-gamme.png"}
-              height={433}
-              width={433}
-              quality={100}
-              priority
-              alt="logement-haut-gamme"
-            />
-            <div className="pt-[33px]">
-              <motion.h3
-                initial={{ y: "100px", opacity: 0 }}
-                whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
-                className="title-3 uppercase"
-              >
-                30 logements haut de gamme
-              </motion.h3>
+        <div className="grid relative grid-cols-1 md:grid-cols-2 gap-[32px] mt-[54px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
+            <div className="pt-16 ">
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
@@ -71,53 +44,226 @@ const page = () => {
                   // type: "spring",
                   offset: 300,
                 }}
-                className=" paragraph-1 "
-              >
-                30 logements haut de gamme, dont 12 maisons de ville, en bordure
-                de la rivière Saint-Charles et à deux pas du parc des Saules.
-              </motion.p>
-            </div>
-          </div>
-          <div className="">
-            <Image
-              src={"/gestion-logement.png"}
-              height={433}
-              width={433}
-              quality={100}
-              priority
-              alt="Gestion 6 logements"
-            />
-            <div className="pt-[33px]">
-              <motion.h3
-                initial={{ y: "100px", opacity: 0 }}
-                whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
-                className="title-3 uppercase"
-              >
-                Gestion 6 logements
-              </motion.h3>
-              <motion.p
-                initial={{ y: "100px", opacity: 0 }}
-                whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
-                className=" paragraph-1 "
+                className="max-w-[285px] paragraph-1 m-auto"
               >
                 {
-                  "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
+                  " Chez SICA, nous sommes bien plus qu'une équipe : nous sommes une famille passionnée et expérimentée, en constante expansion,dévouée à aider nos client à gérer et développer leur parc immobilier. Rejoignez-nous dès aujourd'hui !"
                 }
               </motion.p>
             </div>
+            <div className="lg:flex hidden flex-col pt-10 gap-10">
+              <div className="flex flex-col items-center justify-center gap-5">
+                <Button
+                  onClick={() => swiperRef.current?.slideNext()}
+                  variant="secondary"
+                  className="w-[159px]"
+                  iconPosition="right"
+                >
+                  Suivant
+                </Button>
+                <Button
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  variant="secondary"
+                  className="w-[159px]"
+                  iconPosition="left"
+                >
+                  Précédent
+                </Button>
+              </div>
+              <p className="-ml-28 text-center">23</p>
+            </div>
           </div>
+          <div>
+            <Swiper
+              slidesPerView={1}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 2,
+                },
+              }}
+              spaceBetween={20}
+              onSlideChange={() => console.log(currentIndex)}
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              // allowTouchMove={false}
+            >
+              <SwiperSlide>
+                {" "}
+                <div className="">
+                  <Image
+                    src={"/logement-haut-gamme.png"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="logement-haut-gamme"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className="title-3 uppercase"
+                    >
+                      30 logements haut de gamme
+                    </motion.h3>
+                    <motion.p
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className=" paragraph-1 "
+                    >
+                      30 logements haut de gamme, dont 12 maisons de ville, en
+                      bordure de la rivière Saint-Charles et à deux pas du parc
+                      des Saules.
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/gestion-logement.png"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className="title-3 uppercase"
+                    >
+                      Gestion 6 logements
+                    </motion.h3>
+                    <motion.p
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className=" paragraph-1 "
+                    >
+                      {
+                        "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
+                      }
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                {" "}
+                <div className="">
+                  <Image
+                    src={"/logement-haut-gamme.png"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="logement-haut-gamme"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className="title-3 uppercase"
+                    >
+                      30 logements haut de gamme
+                    </motion.h3>
+                    <motion.p
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className=" paragraph-1 "
+                    >
+                      30 logements haut de gamme, dont 12 maisons de ville, en
+                      bordure de la rivière Saint-Charles et à deux pas du parc
+                      des Saules.
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/gestion-logement.png"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className="title-3 uppercase"
+                    >
+                      Gestion 6 logements
+                    </motion.h3>
+                    <motion.p
+                      initial={{ y: "100px", opacity: 0 }}
+                      whileInView={{ y: "0px", opacity: 1 }}
+                      transition={{
+                        // type: "spring",
+                        offset: 300,
+                      }}
+                      className=" paragraph-1 "
+                    >
+                      {
+                        "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
+                      }
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+
           <div className="flex lg:hidden flex-col pt-10 gap-10">
             <div className="flex flex-col items-center justify-center gap-5">
-              <Button variant="secondary">Suivant</Button>
-              <Button variant="secondary">Précédent</Button>
+              <Button
+                onClick={() => swiperRef.current?.slideNext()}
+                variant="secondary"
+                className="w-[159px]"
+                iconPosition="right"
+              >
+                Suivant
+              </Button>
+              <Button
+                onClick={() => swiperRef.current?.slidePrev()}
+                variant="secondary"
+                className="w-[159px]"
+                iconPosition="left"
+              >
+                Précédent
+              </Button>
             </div>
             <p className="-ml-28 text-center">23</p>
           </div>
@@ -695,4 +841,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

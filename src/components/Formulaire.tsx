@@ -33,7 +33,7 @@ const Formulaire = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/app/email/route", {
+        const response = await fetch("/email", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

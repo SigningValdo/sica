@@ -8,6 +8,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "textWithLine";
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  iconPosition?: "left" | "right";
 }
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
   variant = "primary",
   onClick,
   className,
+  iconPosition = "right",
 }: ButtonProps) {
   const variantClasses = {
     // Bouton rouge plein -> survol plus foncé
@@ -35,11 +37,12 @@ export default function Button({
       onClick={onClick}
       className={`${variantClasses[variant]} ${className}`}
     >
-      {children}{" "}
-      {variant !== "primary" ? (
+      {variant !== "primary" && iconPosition === "left" && (
+        <ReactSVG src="left_icon.svg" className="min-h-[12px] min-w-[14px]" />
+      )}
+      {children}
+      {variant !== "primary" && iconPosition === "right" && (
         <ReactSVG src="right_icon.svg" className="min-h-[12px] min-w-[14px]" />
-      ) : (
-        ""
       )}
     </button>
   );
