@@ -267,9 +267,21 @@ const Page = () => {
                   // type: "spring",
                   offset: 300,
                 }}
-                className="title-1"
+                className="title-1 hidden sm:block"
               >
                 Ménage multilogements
+              </motion.h1>
+              <motion.h1
+                initial={{ y: "100px", opacity: 0 }}
+                whileInView={{ y: "0px", opacity: 1 }}
+                transition={{
+                  // type: "spring",
+                  offset: 300,
+                }}
+                className="title-1 sm:hidden"
+              >
+                Ménage multi- <br />
+                logements
               </motion.h1>
 
               {/* Checklist */}
