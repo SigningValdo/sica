@@ -49,9 +49,11 @@ const page = () => {
                 offset: 400,
               }}
             >
-              <Button variant="secondary" className="mt-5 lg:mt-[64px]">
-                Demander une soumission
-              </Button>
+              <Link href="/contact">
+                <Button variant="secondary" className="mt-5 lg:mt-[64px]">
+                  Demander une soumission
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -211,7 +213,9 @@ const page = () => {
                 offset: 300,
               }}
             >
-              <Button variant="secondary">Obtenir un dévis gratuit</Button>
+              <Link href="/contact">
+                <Button variant="secondary">Obtenir un dévis gratuit</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -229,7 +233,9 @@ const page = () => {
           Locataire, propriétaire ou promoteur : nous sommes toujours là pour
           vous
         </motion.p>
-        <Button variant="primary">Nous contacter</Button>
+        <Link href="/contact">
+          <Button variant="primary">Nous contacter</Button>
+        </Link>
       </section>
     </div>
   );

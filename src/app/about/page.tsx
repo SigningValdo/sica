@@ -2,9 +2,13 @@
 import Button from "@/components/Button";
 import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
-import React from "react";
+import React, { RefObject, useRef } from "react";
 import { motion } from "framer-motion";
-const page = () => {
+const Page = () => {
+  const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const ref = useRef<HTMLDivElement>(null);
   return (
     <div>
       <section className=" bg-[#1C1C1C] flex flex-col gap-10 lg:flex-row lg:gap-0 pt-[32px] lg:pt-0  lg:mt-[32px]">
@@ -140,7 +144,11 @@ const page = () => {
                 offset: 300,
               }}
             >
-              <Button variant="secondary" className="mt-[60px]">
+              <Button
+                onClick={() => scrollToSection(ref)}
+                variant="secondary"
+                className="mt-[60px]"
+              >
                 Demander une soumission
               </Button>
             </motion.div>
@@ -384,7 +392,10 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className=" relative flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-0 px-4 lg:px-0">
+      <section
+        ref={ref}
+        className=" relative flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-0 px-4 lg:px-0"
+      >
         <div className=" lg:mt-[92px] w-full flex flex-col justify-between gap-10 lg:items-center lg:gap-0">
           <div className="max-w-[522px]">
             <div className=" m-auto space-y-[44px] paragraph-1">
@@ -429,4 +440,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
-import React from "react";
+import React, { RefObject } from "react";
 import { motion } from "framer-motion";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,6 +20,10 @@ const Page = () => {
       setCurrentIndex(s.realIndex + 1);
     });
   }, []);
+  const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const ref = useRef<HTMLDivElement>(null);
   return (
     <div className="pt-20 lg:pt-[117px] px-4 xl:px-0">
       <section className="xl:mr-[52px]">
@@ -326,7 +330,9 @@ const Page = () => {
                 offset: 300,
               }}
             >
-              <Button variant="secondary">Demander une soumission</Button>
+              <Button onClick={() => scrollToSection(ref)} variant="secondary">
+                Demander une soumission
+              </Button>
             </motion.div>
           </div>
         </motion.div>
@@ -783,7 +789,10 @@ const Page = () => {
           />
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-[44px]">
+      <section
+        ref={ref}
+        className="flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-[44px]"
+      >
         <motion.div
           // initial={{ y: "100px", opacity: 0 }}
           // whileInView={{ y: "0px", opacity: 1 }}

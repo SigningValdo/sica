@@ -2,10 +2,14 @@
 import Button from "@/components/Button";
 import Formulaire from "@/components/Formulaire";
 import Image from "next/image";
-import React from "react";
+import React, { RefObject, useRef } from "react";
 import { motion } from "framer-motion";
 
-const page = () => {
+const Page = () => {
+  const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const ref = useRef<HTMLDivElement>(null);
   return (
     <div className="px-4 xl:px-0">
       <section className=" flex flex-col gap-10 xl:gap-0 lg:flex-row">
@@ -72,7 +76,9 @@ const page = () => {
                 offset: 300,
               }}
             >
-              <Button variant="secondary">Demander une soumission</Button>
+              <Button onClick={() => scrollToSection(ref)} variant="secondary">
+                Demander une soumission
+              </Button>
             </motion.div>
           </div>
         </div>
@@ -610,7 +616,10 @@ const page = () => {
           </div>
         </motion.div>
       </section>
-      <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] gap-[44px]">
+      <section
+        ref={ref}
+        className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] gap-[44px]"
+      >
         <div className="mt-[92px] w-full flex xl:justify-end">
           <div className=" max-w-[675px] ">
             <div className=" m-auto space-y-[44px] paragraph-1">
@@ -660,4 +669,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
