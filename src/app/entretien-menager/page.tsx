@@ -323,7 +323,7 @@ const page = () => {
               width={625}
               height={334}
               objectFit="contain"
-              className="w-full max-h-[334px]"
+              className="w-full"
             />
           </div>
         </div>
@@ -399,7 +399,7 @@ const page = () => {
               width={625}
               height={334}
               objectFit="contain"
-              className="w-full max-h-[334px]"
+              className="w-full "
             />
           </div>
         </div>
