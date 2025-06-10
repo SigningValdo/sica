@@ -426,7 +426,7 @@ const Page = () => {
           </div>
         </div>
         <Image
-          src="/demande-soumission.png"
+          src="/image.png"
           alt="Home Image"
           quality={100} // qualité maximale
           priority
