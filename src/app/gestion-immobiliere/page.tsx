@@ -26,7 +26,7 @@ const Page = () => {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div className="pt-20 lg:pt-[117px] px-4 xl:px-0">
-      <section className="xl:mr-[52px]">
+      <section className="2xl:mr-[52px]">
         <motion.h1
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
@@ -38,7 +38,7 @@ const Page = () => {
         >
           Nous administrons ces blocs
         </motion.h1>
-        <div className="grid relative grid-cols-1 md:grid-cols-2 gap-[32px] mt-[54px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] mt-[54px]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
             <div className="pt-16 ">
               <motion.p
@@ -273,7 +273,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-10 xl:gap-0 mt-10 lg:mt-[270px]">
+      <section className="flex flex-col lg:flex-row  max-2xl:gap-10 mt-10 lg:mt-[270px]">
         <div className=" w-full">
           <motion.h1
             initial={{ y: "100px", opacity: 0 }}
@@ -284,7 +284,8 @@ const Page = () => {
             }}
             className="max-w-[675px] lg:m-auto mb-20 title-1"
           >
-            On optimise, on anticipe et on valorise votre <br /> bien.
+            On optimise, on anticipe et on valorise votre{" "}
+            <br className=" hidden 2xl:block" /> bien.
           </motion.h1>
           <Image
             quality={100}
@@ -791,7 +792,7 @@ const Page = () => {
       </section>
       <section
         ref={ref}
-        className="flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 lg:gap-[44px]"
+        className="flex flex-col lg:flex-row mt-10 lg:mt-[194px] gap-10 xl:ml-5 2xl:ml-0lg:gap-[44px]"
       >
         <motion.div
           // initial={{ y: "100px", opacity: 0 }}

@@ -65,7 +65,7 @@ const Formulaire = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="w-full bg-white p-4 pt-[60px] xl:pl-[44px] lg:pb-[116px] xl:pr-[122px] border border-black space-y-[44px]"
+      className="w-full bg-white p-4 pt-[60px] xl:px-[44px] 2xl:pl-[44px] lg:pb-[116px] 2xl:pr-[122px] border border-black space-y-[44px]"
     >
       <div className="space-y-4">
         <div className=" flex flex-col gap-4">

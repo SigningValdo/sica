@@ -12,7 +12,7 @@ const Page = () => {
   const ref = useRef<HTMLDivElement>(null);
   return (
     <div className="px-4 xl:px-0">
-      <section className=" flex flex-col gap-10 xl:gap-0 lg:flex-row">
+      <section className=" flex flex-col gap-10 2xl:gap-0 lg:flex-row">
         <div className=" w-full relative">
           <div className="hidden lg:block absolute m-auto w-full bg-white h-[32px] top-1/2 z-10"></div>
           <div className="hidden lg:block absolute m-auto h-full bg-white w-[32px] left-1/2 z-10"></div>
@@ -83,7 +83,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] 2xl:mx-[44px]">
         <div className="w-full lg:m-auto">
           <div className="max-w-[608px] lg:m-auto space-y-[30px]">
             <motion.h1
@@ -170,7 +170,7 @@ const Page = () => {
           />
         </div>
       </section>
-      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] 2xl:mx-[44px]">
         <div className=" w-full grid lg:grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
           <Image
             src="/menage-commercial.png"
@@ -194,7 +194,7 @@ const Page = () => {
           />
         </div>
         <div className="w-full lg:m-auto">
-          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
+          <div className="max-w-[608px] lg:m-auto  space-y-[44px]">
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
@@ -256,9 +256,9 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px] gap-[30px]">
+      <section className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] xl:mx-5 2xl:mx-[44px] gap-[30px]">
         <div className="w-full flex flex-col justify-between gap-[68px] lg:gap-0 lg:items-center">
-          <div className=" xl:w-max">
+          <div className=" 2xl:w-max">
             <div className=" lg:m-auto space-y-[44px]">
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
@@ -422,7 +422,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-5 2xl:mx-[44px]">
         <div className=" w-full ">
           <Image
             src="/menage-restaurant.png"
@@ -498,7 +498,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-[44px]">
+      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-5 2xl:mx-[44px]">
         <div className="w-full m-auto">
           <div className="max-w-[608px] lg:m-auto space-y-[44px]">
             <motion.h1
@@ -630,9 +630,9 @@ const Page = () => {
       </section>
       <section
         ref={ref}
-        className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] gap-[44px]"
+        className="flex flex-col lg:flex-row mt-10 2xl:mt-[215px] xl:ml-5 2xl:ml-0 gap-[44px]"
       >
-        <div className="mt-[92px] w-full flex xl:justify-end">
+        <div className="mt-[92px] w-full  flex xl:justify-end">
           <div className=" max-w-[675px] ">
             <div className=" m-auto space-y-[44px] paragraph-1">
               <motion.h1

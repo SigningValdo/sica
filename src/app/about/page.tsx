@@ -12,7 +12,7 @@ const Page = () => {
   return (
     <div>
       <section className=" bg-[#1C1C1C] flex flex-col gap-10 lg:flex-row lg:gap-0 pt-[32px] lg:pt-0  lg:mt-[32px]">
-        <div className="w-full xl:m-auto p-4 xl:p-0 ">
+        <div className="w-full xl:m-auto p-4 2xl:p-0 ">
           <div className=" max-w-[625px] lg:m-auto space-y-[64px]">
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
@@ -68,7 +68,7 @@ const Page = () => {
           />
         </div>
       </section>
-      <section className=" flex flex-col gap-10 lg:flex-row lg:gap-0 mt-10 lg:mt-20 xl:mt-[215px] px-4 xl:px-0 xl:mx-[44px]">
+      <section className=" flex flex-col gap-10 lg:flex-row lg:gap-0 mt-10 lg:mt-20 xl:mt-[215px] px-4 xl:px-0 xl:mx-5 2xl:mx-[44px]">
         <div className="w-full lg:m-auto ">
           <div className=" max-w-[625px] lg:m-auto">
             <motion.h1
@@ -167,8 +167,8 @@ const Page = () => {
           />
         </div>
       </section>
-      <section className="flex flex-col-reverse gap-10 lg:flex-row xl:gap-0 mt-10 lg:mt-[215px] px-4 xl:px-0 xl:mx-[44px]">
-        <div className=" w-full grid lg:grid-cols-2 gap-4 xl:gap-[32px] min-h-[434px]">
+      <section className="flex flex-col-reverse gap-10 lg:flex-row 2xl:gap-0 mt-10 lg:mt-[215px] px-4 xl:px-0 xl:mx-5 2xl:mx-[44px]">
+        <div className=" w-full grid lg:grid-cols-2 gap-4 2xl:gap-[32px] min-h-[434px]">
           <Image
             src="/nos-valeurs-1.png"
             alt="Nos Valeurs"
@@ -269,7 +269,7 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row gap-[30px] xl:mx-[44px] mt-10 lg:mt-[215px] px-4 xl:px-0">
+      <section className="flex flex-col lg:flex-row gap-[30px] 2xl:mx-[44px] xl:mx-5 mt-10 lg:mt-[215px] px-4 xl:px-0">
         <div className="w-full flex flex-col justify-between lg:items-center gap-[68px] lg:gap-0">
           <div className=" xl:w-max">
             <div className=" m-auto space-y-[44px]">
@@ -317,7 +317,7 @@ const Page = () => {
           </div>
         </div>
         <div className="w-full flex flex-col lg:items-center gap-[68px]">
-          <div className=" xl:w-max xl:m-auto">
+          <div className=" 2xl:w-max 2xl:m-auto">
             <div className=" lg:m-auto space-y-[44px]">
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
