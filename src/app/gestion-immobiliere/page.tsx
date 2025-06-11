@@ -5,21 +5,22 @@ import Image from "next/image";
 import React, { RefObject } from "react";
 import { motion } from "framer-motion";
 import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect, useRef } from "react";
-import type { Swiper as SwiperType } from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
+// import type { Swiper as SwiperType } from "swiper";
 
 const Page = () => {
-  const swiperRef = useRef<SwiperType | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(1);
+  // const swiperRef = useRef<SwiperType | null>(null);
+  // const [currentIndex, setCurrentIndex] = useState(1);
 
-  useEffect(() => {
-    if (!swiperRef.current) return;
+  // useEffect(() => {
+  //   if (!swiperRef.current) return;
 
-    swiperRef.current.on("realIndexChange", (s: SwiperType) => {
-      setCurrentIndex(s.realIndex + 1);
-    });
-  }, []);
+  //   swiperRef.current.on("realIndexChange", (s: SwiperType) => {
+  //     setCurrentIndex(s.realIndex + 1);
+  //   });
+  // }, []);
   const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -58,7 +59,7 @@ const Page = () => {
             <div className="lg:flex hidden flex-col pt-10 gap-10">
               <div className="flex flex-col items-center justify-center gap-5">
                 <Button
-                  onClick={() => swiperRef.current?.slideNext()}
+                  // onClick={() => swiperRef.current?.slideNext()}
                   variant="secondary"
                   className="w-[159px]"
                   iconPosition="right"
@@ -66,7 +67,7 @@ const Page = () => {
                   Suivant
                 </Button>
                 <Button
-                  onClick={() => swiperRef.current?.slidePrev()}
+                  // onClick={() => swiperRef.current?.slidePrev()}
                   variant="secondary"
                   className="w-[159px]"
                   iconPosition="left"
@@ -77,14 +78,84 @@ const Page = () => {
               <p className="-ml-28 text-center">23</p>
             </div>
           </div>
-          <div>
-            <Swiper
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {" "}
+            <div className="">
+              <Image
+                src={"/logement-haut-gamme.png"}
+                height={433}
+                width={433}
+                quality={100}
+                priority
+                alt="logement-haut-gamme"
+              />
+              <div className="pt-[33px]">
+                <motion.h3
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className="title-3 uppercase"
+                >
+                  30 logements haut de gamme
+                </motion.h3>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className=" paragraph-1 "
+                >
+                  30 logements haut de gamme, dont 12 maisons de ville, en
+                  bordure de la rivière Saint-Charles et à deux pas du parc des
+                  Saules.
+                </motion.p>
+              </div>
+            </div>
+            <div className="">
+              <Image
+                src={"/gestion-logement.png"}
+                height={433}
+                width={433}
+                quality={100}
+                priority
+                alt="Gestion 6 logements"
+              />
+              <div className="pt-[33px]">
+                <motion.h3
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className="title-3 uppercase"
+                >
+                  Gestion 6 logements
+                </motion.h3>
+                <motion.p
+                  initial={{ y: "100px", opacity: 0 }}
+                  whileInView={{ y: "0px", opacity: 1 }}
+                  transition={{
+                    // type: "spring",
+                    offset: 300,
+                  }}
+                  className=" paragraph-1 "
+                >
+                  {
+                    "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
+                  }
+                </motion.p>
+              </div>
+            </div>
+            {/* <Swiper
               slidesPerView={1}
               breakpoints={{
                 768: {
-                  slidesPerView: 2,
-                },
-                1024: {
                   slidesPerView: 2,
                 },
               }}
@@ -247,13 +318,13 @@ const Page = () => {
                   </div>
                 </div>
               </SwiperSlide>
-            </Swiper>
+            </Swiper> */}
           </div>
 
           <div className="flex lg:hidden flex-col pt-10 gap-10">
             <div className="flex flex-col items-center justify-center gap-5">
               <Button
-                onClick={() => swiperRef.current?.slideNext()}
+                // onClick={() => swiperRef.current?.slideNext()}
                 variant="secondary"
                 className="w-[159px]"
                 iconPosition="right"
@@ -261,7 +332,7 @@ const Page = () => {
                 Suivant
               </Button>
               <Button
-                onClick={() => swiperRef.current?.slidePrev()}
+                // onClick={() => swiperRef.current?.slidePrev()}
                 variant="secondary"
                 className="w-[159px]"
                 iconPosition="left"
@@ -274,7 +345,7 @@ const Page = () => {
         </div>
       </section>
       <section className="flex flex-col lg:flex-row  max-2xl:gap-10 mt-10 lg:mt-[270px]">
-        <div className=" w-full">
+        <div className=" w-full lg:m-auto">
           <motion.h1
             initial={{ y: "100px", opacity: 0 }}
             whileInView={{ y: "0px", opacity: 1 }}
@@ -284,8 +355,7 @@ const Page = () => {
             }}
             className="max-w-[675px] lg:m-auto mb-20 title-1"
           >
-            On optimise, on anticipe et on valorise votre{" "}
-            <br className=" hidden 2xl:block" /> bien.
+            On optimise, on anticipe et on valorise votre bien.
           </motion.h1>
           <Image
             quality={100}
