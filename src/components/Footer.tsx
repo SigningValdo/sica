@@ -82,7 +82,7 @@ const Footer = () => {
               {/* Social Media Links Placeholder */}
             </div>
             <div className="mt-[44px]">
-              <Link href="#">Facebook</Link>
+              <Link href="https://www.facebook.com/gestionsica">Facebook</Link>
             </div>
           </div>
         </div>

@@ -270,7 +270,7 @@ const Page = () => {
         </div>
       </section>
       <section className="flex flex-col lg:flex-row gap-[30px] 2xl:mx-[44px] xl:mx-5 mt-10 lg:mt-[215px] px-4 xl:px-0">
-        <div className="w-full flex flex-col justify-between lg:items-center gap-[68px] lg:gap-0">
+        <div className="w-full flex flex-col  lg:items-center gap-[68px] ">
           <div className=" xl:w-max">
             <div className=" m-auto space-y-[44px]">
               <motion.h1
@@ -297,7 +297,7 @@ const Page = () => {
                   className=" max-w-[522px] mt-6"
                 >
                   {
-                    "SICA, c’est bien plus qu’une entreprise : c’est une famille de professionnels passionnés, qui évolue dans le domaine immobilier depuis plusieurs années. Chacun de nos gestionnaires, agents et techniciens est formé pour vous offrir un service impeccable, avec une attention particulière aux détails."
+                    "SICA, c’est bien plus qu’une entreprise : c’est une famille de professionnels passionnés, qui évolue dans le domaine immobilier depuis plusieurs années. Chacun de nos gestionnaires, agents et techniciens est formé pour vous offrir un service impeccable, avec une attention particulière aux détails. Les deux co-propriétaires, M. Jacob Poulin et M. Pierre Barthell, sont très fiers de voir grandir la compagnie et de constater l’évolution constante de l’équipe, reflet de l’engagement et du dévouement de chacun."
                   }
                 </motion.p>
               </div>
@@ -316,7 +316,7 @@ const Page = () => {
             />
           </div>
         </div>
-        <div className="w-full flex flex-col lg:items-center gap-[68px]">
+        <div className="w-full flex flex-col lg:items-center gap-[68px] lg:justify-between">
           <div className=" 2xl:w-max 2xl:m-auto">
             <div className=" lg:m-auto space-y-[44px]">
               <motion.h1
@@ -425,15 +425,17 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <Image
-          src="/image.png"
-          alt="Home Image"
-          quality={100} // qualité maximale
-          priority
-          width={625}
-          height={504}
-          className="w-full h-full -z-10 hidden lg:block max-h-[504px] absolute bottom-0 left-0"
-        />
+        <div className="w-full -z-10 absolute bottom-0 hidden lg:block overflow-hidden h-[504px]">
+          <Image
+            src="/soumission-image.jpg"
+            alt="Home Image"
+            quality={100} // qualité maximale
+            priority
+            width={625}
+            height={504}
+            className="w-full h-full object-cover"
+          />
+        </div>
         <Formulaire />
       </section>
     </div>

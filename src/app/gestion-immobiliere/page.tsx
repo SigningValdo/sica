@@ -451,7 +451,7 @@ const Page = () => {
                   "Analyse de marché et stratégie de mise en marché",
                   "Prise de photos professionnelles",
                   "Réception des appels + organisation des visites",
-                  "Sélection rigoureuse avec enquêtes complètes :Crédit, criminel, antécédents au TAL, références Signature du bail + annexes + remise des clés",
+                  "Sélection rigoureuse avec enquêtes complètes : crédit, criminel, antécédents au TAL, références d'ancien propriétaire, signature du bail et annexe, déménagement et remise des clés.",
                 ].map((item, index) => (
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
