@@ -425,16 +425,15 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="w-full -z-10 absolute bottom-0 hidden lg:block overflow-hidden h-[504px]">
-          <Image
+        <div className="w-full -z-10 absolute bottom-0 hidden lg:block overflow-hidden h-[504px] lg:h-[504px]">
+          <img
             src="/soumission-image.jpg"
             alt="Home Image"
-            quality={100} // qualité maximale
-            priority
-            objectFit="contain"
-            width={625}
-            height={504}
-            className="w-full h-full object-cover"
+            // quality={100} // qualité maximale
+            // priority
+            // objectFit="cover"
+            // layout="fill"
+            className="w-full h-full object-cover object-center"
           />
         </div>
         <Formulaire />
