@@ -92,7 +92,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center border-t border-grey py-6 text-lg">
+      <div className="text-center border-t text-grey border-grey py-6 text-lg">
         <p> ©2025 Designé et intégré par JFT Art</p>
       </div>
     </footer>
