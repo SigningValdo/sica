@@ -63,6 +63,8 @@ const page = () => {
             alt="Home Image"
             width={625}
             height={787}
+            quality={100} // qualité maximale
+            priority
             objectFit="contain"
             className="w-full h-full xl:max-h-[787px]"
           />
