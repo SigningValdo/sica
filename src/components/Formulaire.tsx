@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import SuccessModal from "./SucessModal";
 
 const validationSchema = Yup.object({
   Courriel: Yup.string()
@@ -20,6 +21,11 @@ const validationSchema = Yup.object({
 });
 export type ContactData = Yup.InferType<typeof validationSchema>;
 const Formulaire = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalStatus, setModalStatus] = useState<
+    "loading" | "success" | "error"
+  >("loading");
+  const [modalMessage, setModalMessage] = useState<string>("");
   const formik = useFormik({
     initialValues: {
       Courriel: "",
@@ -32,6 +38,8 @@ const Formulaire = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      setModalOpen(true);
+      setModalStatus("loading");
       try {
         const response = await fetch("/email", {
           method: "POST",
@@ -49,15 +57,18 @@ const Formulaire = () => {
         });
         const data = await response.json();
         if (response.ok) {
-          alert(data.message || "Votre message a bien été envoyé.");
+          setModalStatus("success");
+          setModalMessage(data.message || "Votre message a bien été envoyé.");
           resetForm();
         } else {
-          alert(
+          setModalStatus("error");
+          setModalMessage(
             data.error || "Une erreur est survenue lors de l'envoi du message."
           );
         }
       } catch {
-        alert("Une erreur est survenue lors de l'envoi du message.");
+        setModalStatus("error");
+        setModalMessage("Une erreur est survenue lors de l'envoi du message.");
       }
     },
   });
@@ -67,6 +78,12 @@ const Formulaire = () => {
       onSubmit={formik.handleSubmit}
       className="w-full bg-white p-4 pt-[60px] xl:px-[44px] 2xl:pl-[44px] lg:pb-[116px] 2xl:pr-[122px] border border-black space-y-[44px]"
     >
+      <SuccessModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        status={modalStatus}
+        message={modalMessage}
+      />
       <div className="space-y-4">
         <div className=" flex flex-col gap-4">
           <label htmlFor="Courriel">Courriel</label>
