@@ -39,7 +39,7 @@ const Page = () => {
         >
           Nous administrons ces blocs
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] mt-[54px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[32px] mt-[54px]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px]">
             <div className="pt-16 ">
               <motion.p
@@ -56,7 +56,7 @@ const Page = () => {
                 }
               </motion.p>
             </div>
-            <div className="lg:flex hidden flex-col pt-10 gap-10">
+            <div className="md:flex hidden flex-col pt-10 gap-10">
               <div className="flex flex-col items-center justify-center gap-5">
                 <Button
                   // onClick={() => swiperRef.current?.slideNext()}
@@ -321,7 +321,7 @@ const Page = () => {
             </Swiper> */}
           </div>
 
-          <div className="flex lg:hidden flex-col pt-10 gap-10">
+          <div className="flex md:hidden flex-col pt-10 gap-10">
             <div className="flex flex-col items-center justify-center gap-5">
               <Button
                 // onClick={() => swiperRef.current?.slideNext()}
