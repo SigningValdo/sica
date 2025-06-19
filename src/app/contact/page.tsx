@@ -12,10 +12,10 @@ import { motion } from "framer-motion";
 
 const page = () => {
   return (
-    <div className="px-4 lg:px-0">
+    <div className="px-4 xl:px-0">
       <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row">
         <div className="mt-[92px] w-full flex flex-col justify-between lg:items-center">
-          <div className="max-w-[522px]">
+          <div className="max-w-[675px]">
             <div className=" m-auto space-y-6 paragraph-1">
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}

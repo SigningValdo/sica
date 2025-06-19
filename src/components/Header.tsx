@@ -58,12 +58,14 @@ const Header = () => {
           <div className="border-l paragraph-2 border-gray-300 p-2 border-b">
             <p className="opacity-0">text</p>
           </div>
-          {Object.entries(ContactInfos).map(([key, value]) => (
+          {ContactInfos2.map((value, index) => (
             <div
-              key={key}
+              key={index}
               className="border-l paragraph-2 border-gray-300 p-2 border-b"
             >
-              <p>{value}</p>
+              <Link target="_blank" href={value.link}>
+                {value.title}
+              </Link>
             </div>
           ))}
         </div>
@@ -104,11 +106,11 @@ const Header = () => {
 
 export default Header;
 
-const ContactInfos = {
-  phone: "581-424-4444",
-  email: "info@sica-quebec.ca",
-  address: "Facebook",
-};
+const ContactInfos2 = [
+  { title: "581-424-4444", link: "tel:+581-424-4444" },
+  { title: "info@sica-quebec.ca", link: "mailto:info@sica-quebec.ca" },
+  { title: "Facebook", link: "https://www.facebook.com/gestionsica" },
+];
 const Navlinks = [
   {
     href: "/gestion-immobiliere",

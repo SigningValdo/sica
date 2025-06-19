@@ -270,7 +270,7 @@ const Page = () => {
         </div>
       </section>
       <section className="flex flex-col lg:flex-row gap-[30px] 2xl:mx-[44px] xl:mx-5 mt-10 lg:mt-[215px] px-4 xl:px-0">
-        <div className="w-full flex flex-col  lg:items-center gap-[68px] ">
+        <div className="w-full flex flex-col  lg:items-center gap-[68px] lg:justify-between ">
           <div className=" xl:w-max">
             <div className=" m-auto space-y-[44px]">
               <motion.h1
@@ -431,6 +431,7 @@ const Page = () => {
             alt="Home Image"
             quality={100} // qualité maximale
             priority
+            objectFit="contain"
             width={625}
             height={504}
             className="w-full h-full object-cover"

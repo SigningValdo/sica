@@ -68,21 +68,26 @@ const Footer = () => {
         <div className="lg:pl-[84px] md:pt-[66px] pb-[18px]">
           <div className="max-w-[323px]">
             <h3 className="inputs text-grey">NOUS CONTACTER</h3>
-            <div className="space-y-3 mt-[44px]">
-              <p>
+            <div className="flex flex-col space-y-3 mt-[44px]">
+              <Link target="_blank" href="mailto:info@sica-quebec.ca">
                 Courriels: <br /> info@sica-quebec.ca
-              </p>
-              <p>
+              </Link>
+              <Link target="_blank" href="tel:+581-424-4444">
                 Téléphones : <br /> 581-424-4444
-              </p>
-              <p>
+              </Link>
+              <Link
+                target="_blank"
+                href="https://maps.app.goo.gl/eSNqUHTp2YXmyBjU7"
+              >
                 Adresse : <br /> 420-A rang Saint-Gabriel, Vallée-Jonction, QC
                 G0S 3J0
-              </p>
+              </Link>
               {/* Social Media Links Placeholder */}
             </div>
             <div className="mt-[44px]">
-              <Link href="https://www.facebook.com/gestionsica">Facebook</Link>
+              <Link target="_blank" href="https://www.facebook.com/gestionsica">
+                Facebook
+              </Link>
             </div>
           </div>
         </div>
