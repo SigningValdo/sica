@@ -38,6 +38,7 @@ const Formulaire = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      setModalMessage(""); // Réinitialise le message de la modal à chaque soumission
       setModalOpen(true);
       setModalStatus("loading");
       try {

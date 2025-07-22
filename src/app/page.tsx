@@ -216,7 +216,7 @@ const page = () => {
               }}
             >
               <Link href="/contact">
-                <Button variant="secondary">Obtenir un dévis gratuit</Button>
+                <Button variant="secondary">Obtenir un devis gratuit</Button>
               </Link>
             </motion.div>
           </motion.div>
