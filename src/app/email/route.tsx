@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     );
 
     const mailOptionsClient: Mail.Options = {
-      from: `"SICA Québec" <${process.env.GMAIL_USER}>`,
+      from: `"SICA Québec" <${process.env.MY_EMAIL || "immosica@gmail.com"}>`,
       to: Courriel,
       subject: `✅ Confirmation de réception - ${Sujet}`,
       html: confirmationHtml,
@@ -118,8 +118,8 @@ export async function POST(request: NextRequest) {
       details: {
         adminEmailId: adminResult.messageId,
         clientEmailId: clientResult?.messageId,
-        from: process.env.GMAIL_USER,
-        to: process.env.ADMIN_EMAIL,
+        from: process.env.MY_EMAIL,
+        to: process.env.MY_EMAIL,
         timestamp: new Date().toISOString(),
         service: "Gmail",
       },
