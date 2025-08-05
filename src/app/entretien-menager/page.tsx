@@ -61,7 +61,7 @@ const Page = () => {
                 }}
                 className="paragraph-1"
               >
-                Chez SICA, la propreté ne se résume pas au nettoyage :elle
+                Chez SICA, la propreté ne se résume pas au nettoyage : elle
                 contribue à la santé, au confort et à l’image de vos espaces.
                 Nous offrons un service sur mesure, effectué par des
                 professionnels expérimentés, avec des standards rigoureux en

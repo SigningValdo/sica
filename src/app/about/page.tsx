@@ -35,7 +35,7 @@ const Page = () => {
                 }}
                 className="text-white"
               >
-                Chez SICA, notre mission est simple :offrir la tranquillité
+                Chez SICA, notre mission est simple : offrir la tranquillité
                 d’esprit aux propriétaires immobiliers, en leur proposant une
                 gestion rigoureuse, humaine et complète de leurs immeubles.
               </motion.h2>

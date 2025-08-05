@@ -157,7 +157,7 @@ const page = () => {
                 className=" max-w-[522px] mt-6"
               >
                 {
-                  "Nous adoptons une approche clé en main : du développement à la gestion quotidienne, en passant par l'entretien ménager et lesoutien aux locataires. Notre équipe s'occupe de tout."
+                  "Nous adoptons une approche clé en main : du développement à la gestion quotidienne, en passant par l'entretien ménager et le soutien aux locataires. Notre équipe s'occupe de tout."
                 }
               </motion.p>
               <div className="mt-4">
