@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Providers } from "@/app/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sica",
-  description: "Votre tranquillité d’esprit, notre priorité.",
+  description: "Votre tranquillité d'esprit, notre priorité.",
 };
 
 export default function RootLayout({
@@ -27,11 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className=" fixed top-0 z-40 left-0 right-0">
-          <Header />
-        </div>
-        <div className=" mt-[80px] lg:mt-[140px]">{children}</div>
-        <Footer />
+        <Providers>
+          <div className=" fixed top-0 z-40 left-0 right-0">
+            <Header />
+          </div>
+          <div className=" mt-[80px] lg:mt-[140px]">{children}</div>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ const Footer = () => {
                 alt="SICA Logo White"
                 width={96}
                 height={40}
-                objectFit="contain"
+                style={{ objectFit: "contain" }}
                 className="h-auto w-auto"
               />
               <p className="mb-2">
@@ -42,7 +42,7 @@ const Footer = () => {
                   alt="SICA Logo White"
                   width={96}
                   height={40}
-                  objectFit="contain"
+                  style={{ objectFit: "contain" }}
                   className="h-auto w-auto"
                 />
               </div>

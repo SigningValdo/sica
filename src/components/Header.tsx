@@ -32,7 +32,7 @@ const Header = () => {
               alt="SICA Logo"
               width={96}
               height={40}
-              objectFit="contain"
+              style={{ objectFit: "contain" }}
               className=" w-40 h-auto lg:w-auto"
             />
           </Link>

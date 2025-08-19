@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        String   @id @default(cuid())
+    email     String   @unique
+    password  String
+    name      String?
+    role      Role     @default(USER)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Logement {
+    id               String         @id @default(cuid())
+    titre            String
+    description      String
+    adresse          String
+    ville            String
+    codePostal       String
+    prix             Float
+    surface          Float
+    chambres         Int
+    sallesDeBain     Int
+    type             TypeLogement
+    statut           StatutLogement @default(DISPONIBLE)
+    images           String // JSON string des URLs des images
+    caracteristiques String // JSON string des caractéristiques
+    createdAt        DateTime       @default(now())
+    updatedAt        DateTime       @updatedAt
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+enum TypeLogement {
+    APPARTEMENT
+    MAISON
+    DUPLEX
+    LOFT
+    STUDIO
+}
+
+enum StatutLogement {
+    DISPONIBLE
+    OCCUPE
+    EN_MAINTENANCE
+    RESERVE
+}
