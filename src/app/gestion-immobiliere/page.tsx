@@ -31,10 +31,6 @@ const Page = () => {
         <motion.h1
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 300,
-          }}
           className="title-1 lg:pl-40"
         >
           Nous administrons ces blocs
@@ -45,10 +41,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="max-w-[285px] paragraph-1 m-auto"
               >
                 {
@@ -93,10 +85,6 @@ const Page = () => {
                 <motion.h3
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-3 uppercase"
                 >
                   30 logements haut de gamme
@@ -104,10 +92,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className=" paragraph-1 "
                 >
                   30 logements haut de gamme, dont 12 maisons de ville, en
@@ -129,10 +113,6 @@ const Page = () => {
                 <motion.h3
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-3 uppercase"
                 >
                   Gestion 6 logements
@@ -140,10 +120,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className=" paragraph-1 "
                 >
                   {
@@ -179,10 +155,6 @@ const Page = () => {
                     <motion.h3
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className="title-3 uppercase"
                     >
                       30 logements haut de gamme
@@ -190,10 +162,6 @@ const Page = () => {
                     <motion.p
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className=" paragraph-1 "
                     >
                       30 logements haut de gamme, dont 12 maisons de ville, en
@@ -217,10 +185,6 @@ const Page = () => {
                     <motion.h3
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className="title-3 uppercase"
                     >
                       Gestion 6 logements
@@ -228,10 +192,6 @@ const Page = () => {
                     <motion.p
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className=" paragraph-1 "
                     >
                       {
@@ -256,10 +216,6 @@ const Page = () => {
                     <motion.h3
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className="title-3 uppercase"
                     >
                       30 logements haut de gamme
@@ -267,10 +223,6 @@ const Page = () => {
                     <motion.p
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className=" paragraph-1 "
                     >
                       30 logements haut de gamme, dont 12 maisons de ville, en
@@ -294,10 +246,6 @@ const Page = () => {
                     <motion.h3
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className="title-3 uppercase"
                     >
                       Gestion 6 logements
@@ -305,10 +253,6 @@ const Page = () => {
                     <motion.p
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       className=" paragraph-1 "
                     >
                       {
@@ -349,10 +293,6 @@ const Page = () => {
           <motion.h1
             initial={{ y: "100px", opacity: 0 }}
             whileInView={{ y: "0px", opacity: 1 }}
-            transition={{
-              // type: "spring",
-              offset: 300,
-            }}
             className="max-w-[675px] lg:m-auto mb-20 title-1"
           >
             On optimise, on anticipe et on valorise votre bien.
@@ -381,10 +321,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-2 leading-[42px]"
             >
               Parce qu’on ne fait pas que gérer : <br />
@@ -396,10 +332,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
             >
               <Button onClick={() => scrollToSection(ref)} variant="secondary">
                 Demander une soumission
@@ -422,10 +354,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Location et cession <br /> de bail
@@ -436,10 +364,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {
@@ -456,10 +380,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -532,10 +452,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Entretien et <br /> maintenance
@@ -546,10 +462,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {
@@ -566,10 +478,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -612,10 +520,6 @@ const Page = () => {
                 <motion.h1
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-1"
                 >
                   Service à la clientèle <br />
@@ -627,10 +531,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     className=" max-w-[522px] mt-6"
                   >
                     {
@@ -648,10 +548,6 @@ const Page = () => {
                       <motion.div
                         initial={{ y: "100px", opacity: 0 }}
                         whileInView={{ y: "0px", opacity: 1 }}
-                        transition={{
-                          // type: "spring",
-                          offset: 300,
-                        }}
                         key={index}
                         className="flex items-start space-x-3"
                       >
@@ -701,10 +597,6 @@ const Page = () => {
                 <motion.h1
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-1"
                 >
                   Gestion financière et <br /> comptabilité
@@ -715,10 +607,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     className=" max-w-[522px] mt-6"
                   >
                     {
@@ -738,10 +626,6 @@ const Page = () => {
                       <motion.div
                         initial={{ y: "100px", opacity: 0 }}
                         whileInView={{ y: "0px", opacity: 1 }}
-                        transition={{
-                          // type: "spring",
-                          offset: 300,
-                        }}
                         key={index}
                         className="flex items-start space-x-3"
                       >
@@ -764,10 +648,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                   >
                     {
                       "Travaux de fermeture d’année et vérification par CPA non inclus"
@@ -806,10 +686,6 @@ const Page = () => {
             <motion.p
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className=" font-bold"
             >
               {"Avec SICA, vous bénéficiez de :"}
@@ -824,10 +700,6 @@ const Page = () => {
                 <motion.div
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   key={index}
                   className="flex items-start space-x-3"
                 >
@@ -878,10 +750,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Obtenez une offre <br /> maintenant
@@ -896,10 +764,7 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
+                className=" max-w-[522px] mt-6"
               >
                 {"SICA est un membre partenaire de la CORPIQ"}
               </motion.p>

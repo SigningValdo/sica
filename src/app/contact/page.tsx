@@ -20,10 +20,6 @@ const page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Vous avez un immeuble à gérer ? Un besoin d’entretien ?
@@ -32,10 +28,6 @@ const page = () => {
                 <motion.h2
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-2 text-primary"
                 >
                   Parlons-en
@@ -43,10 +35,6 @@ const page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                 >
                   {" "}
                   Chez SICA, nous croyons à l’importance du contact humain.{" "}
@@ -71,10 +59,6 @@ const page = () => {
         <motion.p
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 300,
-          }}
           className="title-2 leading-[42px]"
         >
           Courriels : <br /> info@sica-quebec.ca
@@ -82,10 +66,6 @@ const page = () => {
         <motion.p
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 300,
-          }}
           className="title-2 leading-[42px] mt-6"
         >
           Téléphones : <br /> 581-424-4444
@@ -93,10 +73,6 @@ const page = () => {
         <motion.p
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 300,
-          }}
           className="title-2 leading-[42px] mt-[76px]"
         >
           Notre adresse : 420-A rang Saint-Gabriel, Vallée-Jonction, QC G0S 3J0
