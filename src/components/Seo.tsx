@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
 /**
  * Interface pour définir les propriétés SEO d'une page
@@ -9,7 +9,7 @@ export interface SeoProps {
   description: string;
   keywords?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article' | 'profile';
+  ogType?: "website" | "article" | "profile";
   canonicalUrl?: string;
   noIndex?: boolean;
   structuredData?: object;
@@ -18,54 +18,59 @@ export interface SeoProps {
 /**
  * Fonction utilitaire pour générer les métadonnées SEO complètes
  * Centralise la logique SEO pour éviter la duplication de code
- * 
+ *
  * @param seoProps - Propriétés SEO de la page
  * @param baseUrl - URL de base du site (par défaut depuis les variables d'environnement)
  * @returns Objet Metadata compatible avec Next.js App Router
  */
 export function generateSeoMetadata(
   seoProps: SeoProps,
-  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL || 'https://sica-services.fr'
+  baseUrl: string = process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://www.sica-quebec.ca"
 ): Metadata {
   const {
     title,
     description,
     keywords,
-    ogImage = '/images/og-default.jpg',
-    ogType = 'website',
+    ogImage = "/images/og-default.jpg",
+    ogType = "website",
     canonicalUrl,
     noIndex = false,
-    structuredData
+    structuredData,
   } = seoProps;
 
   // Construction du titre complet avec le nom de la marque
-  const fullTitle = title.includes('Sica') ? title : `${title} | Sica - Services de Gestion Immobilière et Entretien Ménager`;
-  
+  const fullTitle = title.includes("Sica")
+    ? title
+    : `${title} | Sica - Services de Gestion Immobilière et Entretien Ménager`;
+
   // URL canonique par défaut
   const canonical = canonicalUrl || baseUrl;
-  
+
   // URL complète de l'image Open Graph
-  const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`;
+  const ogImageUrl = ogImage.startsWith("http")
+    ? ogImage
+    : `${baseUrl}${ogImage}`;
 
   // Construire l'objet "other" séparément pour éviter les problèmes de types avec DeprecatedMetadataFields
   const otherMeta: Record<string, string | number | (string | number)[]> = {
     // Indique que le site est optimisé pour mobile
-    'viewport': 'width=device-width, initial-scale=1',
+    viewport: "width=device-width, initial-scale=1",
     // Langue principale du contenu
-    'content-language': 'fr',
+    "content-language": "fr",
     // Informations sur l'auteur/organisation
-    'author': 'Sica Services',
-    'publisher': 'Sica Services',
+    author: "Sica Services",
+    publisher: "Sica Services",
     // Géolocalisation pour les services locaux
-    'geo.region': 'FR',
-    'geo.placename': 'France',
+    "geo.region": "FR",
+    "geo.placename": "France",
     // Thème couleur pour les navigateurs mobiles
-    'theme-color': '#1f2937', // À adapter selon votre charte graphique
+    "theme-color": "#1f2937", // À adapter selon votre charte graphique
   };
 
   // Ajout des données structurées si fournies
   if (structuredData) {
-    otherMeta['structured-data'] = JSON.stringify(structuredData);
+    otherMeta["structured-data"] = JSON.stringify(structuredData);
   }
 
   const metadata: Metadata = {
@@ -73,43 +78,43 @@ export function generateSeoMetadata(
     title: fullTitle,
     description,
     keywords,
-    
+
     // Métadonnées techniques
-    robots: noIndex ? 'noindex, nofollow' : 'index, follow',
+    robots: noIndex ? "noindex, nofollow" : "index, follow",
     alternates: {
-      canonical
+      canonical,
     },
-    
+
     // Open Graph pour les réseaux sociaux (Facebook, LinkedIn, etc.)
     openGraph: {
       type: ogType,
       title: fullTitle,
       description,
       url: canonical,
-      siteName: 'Sica Services',
-      locale: 'fr_FR',
+      siteName: "Sica Services",
+      locale: "fr_FR",
       images: [
         {
           url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: `${title} - Sica Services`,
-          type: 'image/jpeg',
-        }
+          type: "image/jpeg",
+        },
       ],
     },
-    
+
     // Twitter Card pour un meilleur partage sur Twitter/X
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: fullTitle,
       description,
       images: [ogImageUrl],
-      creator: '@sica_services', // À remplacer par le vrai handle Twitter si disponible
+      creator: "@sica_services", // À remplacer par le vrai handle Twitter si disponible
     },
-    
+
     // Métadonnées supplémentaires pour les moteurs de recherche
-    other: otherMeta
+    other: otherMeta,
   };
 
   return metadata;
@@ -122,26 +127,27 @@ export function generateSeoMetadata(
 export const defaultOrganizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Sica Services",
-  "description": "Services professionnels de gestion immobilière et d'entretien ménager en France",
-  "url": process.env.NEXT_PUBLIC_SITE_URL || "https://sica-services.fr",
-  "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://sica-services.fr"}/images/logo.png`,
-  "contactPoint": {
+  name: "Sica Services",
+  description:
+    "Services professionnels de gestion immobilière et d'entretien ménager en France",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.sica-quebec.ca",
+  logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.sica-quebec.ca"}/images/logo.png`,
+  contactPoint: {
     "@type": "ContactPoint",
-    "telephone": "+33-1-XX-XX-XX-XX", // À remplacer par le vrai numéro
-    "contactType": "customer service",
-    "availableLanguage": "French"
+    telephone: "+33-1-XX-XX-XX-XX", // À remplacer par le vrai numéro
+    contactType: "customer service",
+    availableLanguage: "French",
   },
-  "address": {
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "FR",
-    "addressLocality": "France" // À préciser selon la localisation
+    addressCountry: "FR",
+    addressLocality: "France", // À préciser selon la localisation
   },
-  "sameAs": [
+  sameAs: [
     // À compléter avec les vrais profils sociaux
     "https://www.facebook.com/sica-services",
-    "https://www.linkedin.com/company/sica-services"
-  ]
+    "https://www.linkedin.com/company/sica-services",
+  ],
 };
 
 /**
@@ -151,17 +157,17 @@ export const defaultOrganizationStructuredData = {
 export const localBusinessStructuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Sica Services",
-  "description": "Services de gestion immobilière et entretien ménager",
-  "url": process.env.NEXT_PUBLIC_SITE_URL || "https://sica-services.fr",
-  "telephone": "+33-1-XX-XX-XX-XX", // À remplacer
-  "address": {
+  name: "Sica Services",
+  description: "Services de gestion immobilière et entretien ménager",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.sica-quebec.ca",
+  telephone: "+33-1-XX-XX-XX-XX", // À remplacer
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "FR"
+    addressCountry: "FR",
   },
-  "openingHours": "Mo-Fr 09:00-18:00", // À adapter selon les horaires réels
-  "serviceArea": {
+  openingHours: "Mo-Fr 09:00-18:00", // À adapter selon les horaires réels
+  serviceArea: {
     "@type": "Country",
-    "name": "France"
-  }
+    name: "France",
+  },
 };

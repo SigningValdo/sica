@@ -3,7 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { generateSeoMetadata, defaultOrganizationStructuredData } from "@/components/Seo";
+import {
+  generateSeoMetadata,
+  defaultOrganizationStructuredData,
+} from "@/components/Seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +22,12 @@ const geistMono = Geist_Mono({
 // Utilise le composant SEO centralisé pour maintenir la cohérence
 export const metadata: Metadata = generateSeoMetadata({
   title: "Sica - Services de Gestion Immobilière et Entretien Ménager",
-  description: "Votre tranquillité d'esprit, notre priorité. Services professionnels de gestion immobilière et d'entretien ménager en France. Contactez-nous pour un devis personnalisé.",
-  keywords: "gestion immobilière, entretien ménager, services professionnels, France, maintenance, nettoyage, gestion locative",
+  description:
+    "Votre tranquillité d'esprit, notre priorité. Services professionnels de gestion immobilière et d'entretien ménager en France. Contactez-nous pour un devis personnalisé.",
+  keywords:
+    "gestion immobilière, entretien ménager, services professionnels, France, maintenance, nettoyage, gestion locative, gestion locative Québec, compagnie de gestion immobilière à Québec,services gestion immeubles locatifs, gestion syndicat copropriété, ⁠gestion financière immeuble Québec, comptabilité immobilière,comment choisir un gestionnaire immobilier, frais gestion locative Québec, gestion immobilière clé en main, gestion immobilière complète, entretien ménage commercial Québec, nettoyage de bureaux, ⁠compagnie nettoyage copropriété, entretien des communs d’immeubles, ⁠entretien ménage RPA Québec, nettoyage résidence personnes âgées, entretien ménage restaurants Québec, nettoyage commercial restaurant, nettoyage après construction Québec, nettoyage fin de chantier, ⁠Loi 16 carnet d’entretien, entretien copropriété Québec loi,  ⁠service clientèle 24/7 gestion immobilière",
   ogType: "website",
-  structuredData: defaultOrganizationStructuredData
+  structuredData: defaultOrganizationStructuredData,
 });
 
 export default function RootLayout({
@@ -43,16 +48,20 @@ export default function RootLayout({
         />
         {/* Préconnexion aux domaines externes pour améliorer les performances */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {/* Structure sémantique améliorée pour l'accessibilité et le SEO */}
         <header className="fixed top-0 z-40 left-0 right-0">
           <Header />
         </header>
-        <main className="mt-[80px] lg:mt-[140px]">
-          {children}
-        </main>
+        <main className="mt-[80px] lg:mt-[140px]">{children}</main>
         <Footer />
       </body>
     </html>

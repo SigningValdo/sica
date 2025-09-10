@@ -4,8 +4,9 @@ import type { MetadataRoute } from "next";
 // Configuration du fichier robots.txt pour optimiser l'indexation
 // Indique aux moteurs de recherche quelles pages indexer et où trouver le sitemap
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sica-services.fr';
-  
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.sica-quebec.ca";
+
   return {
     rules: [
       {
@@ -22,7 +23,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "Googlebot", // Règles spécifiques pour Google
         allow: "/",
         crawlDelay: 1, // Délai entre les requêtes pour éviter la surcharge
-      }
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`, // URL du sitemap pour l'indexation
     host: baseUrl, // URL canonique du site
