@@ -53,8 +53,7 @@ const page = () => {
             height={787}
             quality={100} // qualité maximale
             priority
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px] object-contain"
           />
         </div>
       </section>
@@ -89,8 +88,7 @@ const page = () => {
             height={787}
             quality={100}
             priority
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px] object-contain"
           />
         </div>
         <div className="w-full m-auto">

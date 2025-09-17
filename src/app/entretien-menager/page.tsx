@@ -23,8 +23,7 @@ const Page = () => {
             priority
             width={625}
             height={787}
-            objectFit="contain"
-            className="w-full h-full xl:h-[716px]"
+            className="w-full h-full xl:h-[716px] object-contain"
           />
         </div>
         <div className="w-full lg:m-auto ">
@@ -133,8 +132,7 @@ const Page = () => {
             priority
             width={625}
             height={554}
-            objectFit="contain"
-            className="w-full h-full xl:h-[554px]"
+            className="w-full h-full xl:h-[554px] object-contain"
           />
         </div>
       </section>
@@ -147,8 +145,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
           <Image
             src="/entretien-menager.png"
@@ -157,8 +154,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
         </div>
         <div className="w-full lg:m-auto">
@@ -345,8 +341,7 @@ const Page = () => {
                       alt="check"
                       width={20}
                       height={20}
-                      objectFit="contain"
-                      className="mt-2"
+                      className="mt-2 object-contain"
                     />
                     <span>{item}</span>
                   </motion.div>

@@ -51,8 +51,7 @@ const Page = () => {
             priority
             width={625}
             height={662}
-            objectFit="contain"
-            className="w-full h-full"
+            className="w-full h-full object-contain"
           />
         </div>
       </section>
@@ -100,7 +99,7 @@ const Page = () => {
                         alt="check"
                         width={20}
                         height={20}
-                        objectFit="contain"
+                        className="object-contain"
                       />
                       <span>{item}</span>
                     </motion.div>
@@ -130,8 +129,7 @@ const Page = () => {
             priority
             width={899}
             height={558}
-            objectFit="contain"
-            className="w-full h-full"
+            className="w-full h-full object-contain"
           />
         </div>
       </section>
@@ -144,8 +142,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
           <Image
             src="/nos-valeurs-2.png"
@@ -154,8 +151,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
         </div>
         <div className="w-full lg:m-auto">
