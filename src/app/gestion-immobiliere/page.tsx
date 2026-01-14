@@ -67,7 +67,7 @@ const Page = () => {
                   Précédent
                 </Button>
               </div>
-              <p className="-ml-28 text-center">4</p>
+              <p className="-ml-28 text-center">5</p>
             </div>
           </div>
           <div>
@@ -206,6 +206,38 @@ const Page = () => {
                   </div>
                 </div>
               </SwiperSlide>
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/Immeuble-exterieur 2.jpg"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className="title-3 uppercase leading-[22px]"
+                    >
+                      30 logements modernes dans un immeubles de 4 étages
+                    </motion.h3>
+                    <motion.p
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className=" paragraph-1 "
+                    >
+                      L’immeuble Livernois séduit par son architecture
+                      contemporaine raffinée, sa généreuse fenestration, ses
+                      balcons invitants et le choix de matériaux haut de gamme
+                      qui témoignent d’un souci du détail remarquable.
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
 
@@ -228,7 +260,7 @@ const Page = () => {
                 Précédent
               </Button>
             </div>
-            <p className="-ml-28 text-center">4</p>
+            <p className="-ml-28 text-center">5</p>
           </div>
         </div>
       </section>
