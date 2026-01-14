@@ -67,7 +67,7 @@ const Page = () => {
                   Précédent
                 </Button>
               </div>
-              <p className="-ml-28 text-center">5</p>
+              <p className="-ml-28 text-center">6</p>
             </div>
           </div>
           <div>
@@ -238,6 +238,43 @@ const Page = () => {
                   </div>
                 </div>
               </SwiperSlide>
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/Extérieur-1.jpg"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className="title-3 uppercase leading-[22px]"
+                    >
+                      Batiment à 4 niveaux
+                    </motion.h3>
+                    <motion.p
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className=" paragraph-1 "
+                    >
+                      Rez-de-chaussée commercial (restaurants, cafés, services)
+                      + 24 studios répartis aux 2e, 3e et 4e étages.
+                      <br />
+                      <span>Style Contemporain, sobre et raffiné.</span>
+                      <br />
+                      <span>
+                        Situé au 1785 chemin de la Canardière, dans le quartier
+                        Limoilou
+                      </span>
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
 
@@ -260,7 +297,7 @@ const Page = () => {
                 Précédent
               </Button>
             </div>
-            <p className="-ml-28 text-center">5</p>
+            <p className="-ml-28 text-center">6</p>
           </div>
         </div>
       </section>

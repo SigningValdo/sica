@@ -61,17 +61,8 @@ const nextConfig: NextConfig = {
   // Configuration pour le build de production
   poweredByHeader: false, // Supprime le header "X-Powered-By: Next.js" pour la sécurité
 
-  // Optimisation des bundles
-  webpack: (config, { isServer }) => {
-    // Optimisations pour le client uniquement
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-    return config;
-  },
+  // Turbopack config (Next.js 16+ uses Turbopack by default)
+  turbopack: {},
 };
 
 export default nextConfig;
