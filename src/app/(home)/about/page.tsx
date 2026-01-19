@@ -17,10 +17,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className=" title-1 text-primary"
             >
               Notre mission
@@ -29,10 +25,6 @@ const Page = () => {
               <motion.h2
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="text-white"
               >
                 Chez SICA, notre mission est simple : offrir la tranquillité
@@ -42,10 +34,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" text-primary"
               >
                 Nous savons à quel point votre investissement est important,
@@ -63,8 +51,7 @@ const Page = () => {
             priority
             width={625}
             height={662}
-            objectFit="contain"
-            className="w-full h-full"
+            className="w-full h-full object-contain"
           />
         </div>
       </section>
@@ -74,10 +61,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className=" title-1 "
             >
               Notre approche
@@ -86,10 +69,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
               >
                 Nous adoptons une approche clé en main : du développement à la
                 gestion quotidienne, en passant par l’entretien ménager et le
@@ -98,10 +77,6 @@ const Page = () => {
               <motion.h2
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-2 leading-[42px]"
               >
                 Ce qui nous distingue :
@@ -116,10 +91,6 @@ const Page = () => {
                     <motion.div
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       key={index}
                       className="flex  items-center space-x-3"
                     >
@@ -128,7 +99,7 @@ const Page = () => {
                         alt="check"
                         width={20}
                         height={20}
-                        objectFit="contain"
+                        className="object-contain"
                       />
                       <span>{item}</span>
                     </motion.div>
@@ -139,10 +110,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
             >
               <Button
                 onClick={() => scrollToSection(ref)}
@@ -162,8 +129,7 @@ const Page = () => {
             priority
             width={899}
             height={558}
-            objectFit="contain"
-            className="w-full h-full"
+            className="w-full h-full object-contain"
           />
         </div>
       </section>
@@ -176,8 +142,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
           <Image
             src="/nos-valeurs-2.png"
@@ -186,8 +151,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
         </div>
         <div className="w-full lg:m-auto">
@@ -195,10 +159,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Nos valeurs
@@ -210,10 +170,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                 >
                   Nous croyons que la réussite en immobilier passe par :
                 </motion.p>
@@ -221,10 +177,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="mt-6"
                 >
                   <span className="text-primary"> Transparence :</span> Chaque
@@ -233,10 +185,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                 >
                   <span className="text-primary">Efficacité :</span> Réponses
                   rapides et exécution fiable
@@ -244,10 +192,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                 >
                   <span className="text-primary">Professionnalisme :</span>{" "}
                   Respect des normes et excellence opérationnelle
@@ -255,10 +199,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                 >
                   {" "}
                   <span className="text-primary">Respect humain :</span> De vos
@@ -276,10 +216,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Notre équipe
@@ -290,10 +226,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className=" max-w-[522px] mt-6"
                 >
                   {
@@ -322,10 +254,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Pourquoi nous choisir ?
@@ -342,10 +270,6 @@ const Page = () => {
                     <motion.div
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       key={index}
                       className="flex  items-center space-x-3"
                     >
@@ -365,10 +289,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="mt-5"
                 >
                   SICA est la solution. <br />
@@ -402,10 +322,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Demandez une soumission
@@ -413,10 +329,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
               >
                 Vous souhaitez recevoir une évaluation gratuite de vos besoins
                 en gestion ou en entretien ? <br />

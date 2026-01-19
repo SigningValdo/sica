@@ -22,10 +22,6 @@ const page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 400,
-              }}
               className="title-1"
             >
               Votre tranquillité d’esprit, notre priorité.
@@ -33,10 +29,6 @@ const page = () => {
             <motion.h2
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 400,
-              }}
               className=" title-2 text-primary"
             >
               Gestion immobilière et Entretien ménager
@@ -44,10 +36,6 @@ const page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 400,
-              }}
             >
               <Link href="/contact">
                 <Button variant="secondary" className="mt-5 lg:mt-[64px]">
@@ -65,8 +53,7 @@ const page = () => {
             height={787}
             quality={100} // qualité maximale
             priority
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px] object-contain"
           />
         </div>
       </section>
@@ -101,8 +88,7 @@ const page = () => {
             height={787}
             quality={100}
             priority
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[787px]"
+            className="w-full h-full xl:max-h-[787px] object-contain"
           />
         </div>
         <div className="w-full m-auto">
@@ -118,10 +104,6 @@ const page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Chez SICA
@@ -140,20 +122,12 @@ const page = () => {
               <motion.h2
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
               >
                 Pourquoi nous choisir ?
               </motion.h2>
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {
@@ -171,10 +145,6 @@ const page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-center space-x-3"
                   >
@@ -196,10 +166,6 @@ const page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="text-grey mt-4"
               >
                 {
@@ -210,10 +176,6 @@ const page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
             >
               <Link href="/contact">
                 <Button variant="secondary">Obtenir un devis gratuit</Button>
@@ -226,10 +188,6 @@ const page = () => {
         <motion.p
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 400,
-          }}
           className=" max-w-[675px] title-2 leading-[42px]"
         >
           Locataire, propriétaire ou promoteur : nous sommes toujours là pour

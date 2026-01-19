@@ -5,22 +5,22 @@ import Image from "next/image";
 import React, { RefObject } from "react";
 import { motion } from "framer-motion";
 import "swiper/css";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { useState, useEffect, useRef } from "react";
-import { useRef } from "react";
-// import type { Swiper as SwiperType } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect, useRef } from "react";
+// import { useRef } from "react";
+import type { Swiper as SwiperType } from "swiper";
 
 const Page = () => {
-  // const swiperRef = useRef<SwiperType | null>(null);
-  // const [currentIndex, setCurrentIndex] = useState(1);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(1);
 
-  // useEffect(() => {
-  //   if (!swiperRef.current) return;
+  useEffect(() => {
+    if (!swiperRef.current) return;
 
-  //   swiperRef.current.on("realIndexChange", (s: SwiperType) => {
-  //     setCurrentIndex(s.realIndex + 1);
-  //   });
-  // }, []);
+    swiperRef.current.on("realIndexChange", (s: SwiperType) => {
+      setCurrentIndex(s.realIndex + 1);
+    });
+  }, []);
   const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -31,10 +31,6 @@ const Page = () => {
         <motion.h1
           initial={{ y: "100px", opacity: 0 }}
           whileInView={{ y: "0px", opacity: 1 }}
-          transition={{
-            // type: "spring",
-            offset: 300,
-          }}
           className="title-1 lg:pl-40"
         >
           Nous administrons ces blocs
@@ -45,10 +41,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="max-w-[285px] paragraph-1 m-auto"
               >
                 {
@@ -56,10 +48,10 @@ const Page = () => {
                 }
               </motion.p>
             </div>
-            <div className="md:flex hidden flex-col pt-10 gap-10">
+            <div className="hidden md:flex flex-col pt-10 gap-10">
               <div className="flex flex-col items-center justify-center gap-5">
                 <Button
-                  // onClick={() => swiperRef.current?.slideNext()}
+                  onClick={() => swiperRef.current?.slideNext()}
                   variant="secondary"
                   className="w-[159px]"
                   iconPosition="right"
@@ -67,7 +59,7 @@ const Page = () => {
                   Suivant
                 </Button>
                 <Button
-                  // onClick={() => swiperRef.current?.slidePrev()}
+                  onClick={() => swiperRef.current?.slidePrev()}
                   variant="secondary"
                   className="w-[159px]"
                   iconPosition="left"
@@ -75,130 +67,50 @@ const Page = () => {
                   Précédent
                 </Button>
               </div>
-              <p className="-ml-28 text-center">23</p>
+              <p className="-ml-28 text-center">6</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {" "}
-            <div className="">
-              <Image
-                src={"/logement-haut-gamme.png"}
-                height={433}
-                width={433}
-                quality={100}
-                priority
-                alt="logement-haut-gamme"
-              />
-              <div className="pt-[33px]">
-                <motion.h3
-                  initial={{ y: "100px", opacity: 0 }}
-                  whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
-                  className="title-3 uppercase"
-                >
-                  30 logements haut de gamme
-                </motion.h3>
-                <motion.p
-                  initial={{ y: "100px", opacity: 0 }}
-                  whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
-                  className=" paragraph-1 "
-                >
-                  30 logements haut de gamme, dont 12 maisons de ville, en
-                  bordure de la rivière Saint-Charles et à deux pas du parc des
-                  Saules.
-                </motion.p>
-              </div>
-            </div>
-            <div className="">
-              <Image
-                src={"/gestion-logement.png"}
-                height={433}
-                width={433}
-                quality={100}
-                priority
-                alt="Gestion 6 logements"
-              />
-              <div className="pt-[33px]">
-                <motion.h3
-                  initial={{ y: "100px", opacity: 0 }}
-                  whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
-                  className="title-3 uppercase"
-                >
-                  Gestion 6 logements
-                </motion.h3>
-                <motion.p
-                  initial={{ y: "100px", opacity: 0 }}
-                  whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
-                  className=" paragraph-1 "
-                >
-                  {
-                    "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
-                  }
-                </motion.p>
-              </div>
-            </div>
-            {/* <Swiper
+          <div>
+            <Swiper
               slidesPerView={1}
               breakpoints={{
                 768: {
                   slidesPerView: 2,
                 },
               }}
-              spaceBetween={20}
+              spaceBetween={30}
               onSlideChange={() => console.log(currentIndex)}
               onSwiper={(swiper) => (swiperRef.current = swiper)}
+              className=" w-full"
               // allowTouchMove={false}
             >
               <SwiperSlide>
                 {" "}
                 <div className="">
                   <Image
-                    src={"/logement-haut-gamme.png"}
+                    src={"/Image - 01.jpg"}
                     height={433}
                     width={433}
                     quality={100}
                     priority
+                    className="w-[433px] h-[433px] object-cover"
                     alt="logement-haut-gamme"
                   />
                   <div className="pt-[33px]">
                     <motion.h3
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className="title-3 uppercase"
                     >
-                      30 logements haut de gamme
+                      Complexe le Baronet
                     </motion.h3>
                     <motion.p
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className=" paragraph-1 "
                     >
-                      30 logements haut de gamme, dont 12 maisons de ville, en
-                      bordure de la rivière Saint-Charles et à deux pas du parc
-                      des Saules.
+                      23 logements répartie sur 4 étages avec différent type de
+                      3 ½, 4 ½ et 5 ½
                     </motion.p>
                   </div>
                 </div>
@@ -206,37 +118,29 @@ const Page = () => {
               <SwiperSlide>
                 <div className="">
                   <Image
-                    src={"/gestion-logement.png"}
+                    src={"/Image - 02.jpg"}
                     height={433}
                     width={433}
                     quality={100}
                     priority
                     alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
                   />
                   <div className="pt-[33px]">
                     <motion.h3
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className="title-3 uppercase"
                     >
-                      Gestion 6 logements
+                      Complexe le Baronet
                     </motion.h3>
                     <motion.p
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className=" paragraph-1 "
                     >
-                      {
-                        "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
-                      }
+                      64 logements répartie sur 4 étages offrant une piscine
+                      extérieure, gym, salle commune et stationnement intérieur
                     </motion.p>
                   </div>
                 </div>
@@ -245,37 +149,29 @@ const Page = () => {
                 {" "}
                 <div className="">
                   <Image
-                    src={"/logement-haut-gamme.png"}
+                    src={"/Image - 03.jpg"}
                     height={433}
                     width={433}
                     quality={100}
                     priority
                     alt="logement-haut-gamme"
+                    className="w-[433px] h-[433px] object-cover"
                   />
                   <div className="pt-[33px]">
                     <motion.h3
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className="title-3 uppercase"
                     >
-                      30 logements haut de gamme
+                      Établissement Pech
                     </motion.h3>
                     <motion.p
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className=" paragraph-1 "
                     >
-                      30 logements haut de gamme, dont 12 maisons de ville, en
-                      bordure de la rivière Saint-Charles et à deux pas du parc
-                      des Saules.
+                      77 logements répartie sur 10 étages avec local commercial
+                      et café au rez-de-chaussée
                     </motion.p>
                   </div>
                 </div>
@@ -283,48 +179,109 @@ const Page = () => {
               <SwiperSlide>
                 <div className="">
                   <Image
-                    src={"/gestion-logement.png"}
+                    src={"/Image - 04.jpg"}
                     height={433}
                     width={433}
                     quality={100}
                     priority
                     alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
                   />
                   <div className="pt-[33px]">
                     <motion.h3
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className="title-3 uppercase"
                     >
-                      Gestion 6 logements
+                      Établissement Pech
                     </motion.h3>
                     <motion.p
-                      initial={{ y: "100px", opacity: 0 }}
-                      whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
                       className=" paragraph-1 "
                     >
-                      {
-                        "Un grand merci à notre client pour sa confiance dans la gestion de la location et l'entretien ménager !"
-                      }
+                      11 logements répartie sur 3 étages avec garage double et
+                      local commercial
                     </motion.p>
                   </div>
                 </div>
               </SwiperSlide>
-            </Swiper> */}
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/Immeuble-exterieur 2.jpg"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className="title-3 uppercase leading-[22px]"
+                    >
+                      30 logements modernes dans un immeubles de 4 étages
+                    </motion.h3>
+                    <motion.p
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className=" paragraph-1 "
+                    >
+                      L’immeuble Livernois séduit par son architecture
+                      contemporaine raffinée, sa généreuse fenestration, ses
+                      balcons invitants et le choix de matériaux haut de gamme
+                      qui témoignent d’un souci du détail remarquable.
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="">
+                  <Image
+                    src={"/Extérieur-1.jpg"}
+                    height={433}
+                    width={433}
+                    quality={100}
+                    priority
+                    alt="Gestion 6 logements"
+                    className="w-[433px] h-[433px] object-cover"
+                  />
+                  <div className="pt-[33px]">
+                    <motion.h3
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className="title-3 uppercase leading-[22px]"
+                    >
+                      Batiment à 4 niveaux
+                    </motion.h3>
+                    <motion.p
+                      // initial={{ y: "100px", opacity: 0 }}
+                      // whileInView={{ y: "0px", opacity: 1 }}
+                      className=" paragraph-1 "
+                    >
+                      Rez-de-chaussée commercial (restaurants, cafés, services)
+                      + 24 studios répartis aux 2e, 3e et 4e étages.
+                      <br />
+                      <span>Style Contemporain, sobre et raffiné.</span>
+                      <br />
+                      <span>
+                        Situé au 1785 chemin de la Canardière, dans le quartier
+                        Limoilou
+                      </span>
+                    </motion.p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
           </div>
 
           <div className="flex md:hidden flex-col pt-10 gap-10">
             <div className="flex flex-col items-center justify-center gap-5">
               <Button
-                // onClick={() => swiperRef.current?.slideNext()}
+                onClick={() => swiperRef.current?.slideNext()}
                 variant="secondary"
                 className="w-[159px]"
                 iconPosition="right"
@@ -332,7 +289,7 @@ const Page = () => {
                 Suivant
               </Button>
               <Button
-                // onClick={() => swiperRef.current?.slidePrev()}
+                onClick={() => swiperRef.current?.slidePrev()}
                 variant="secondary"
                 className="w-[159px]"
                 iconPosition="left"
@@ -340,7 +297,7 @@ const Page = () => {
                 Précédent
               </Button>
             </div>
-            <p className="-ml-28 text-center">23</p>
+            <p className="-ml-28 text-center">6</p>
           </div>
         </div>
       </section>
@@ -349,10 +306,6 @@ const Page = () => {
           <motion.h1
             initial={{ y: "100px", opacity: 0 }}
             whileInView={{ y: "0px", opacity: 1 }}
-            transition={{
-              // type: "spring",
-              offset: 300,
-            }}
             className="max-w-[675px] lg:m-auto mb-20 title-1"
           >
             On optimise, on anticipe et on valorise votre bien.
@@ -364,8 +317,7 @@ const Page = () => {
             alt="Home Image"
             width={625}
             height={787}
-            objectFit="contain"
-            className="w-full max-h-[478px]"
+            className="w-full max-h-[478px] object-contain"
           />
         </div>
         <motion.div
@@ -381,10 +333,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-2 leading-[42px]"
             >
               Parce qu’on ne fait pas que gérer : <br />
@@ -396,10 +344,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
             >
               <Button onClick={() => scrollToSection(ref)} variant="secondary">
                 Demander une soumission
@@ -422,10 +366,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Location et cession <br /> de bail
@@ -436,10 +376,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {
@@ -456,10 +392,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -488,21 +420,21 @@ const Page = () => {
             alt="Home Image"
             width={433}
             height={433}
-            objectFit="contain"
+            className="object-contain"
           />
           <Image
             src="/location-cession-bail-2.png"
             alt="Home Image"
             width={433}
             height={433}
-            objectFit="contain"
+            className="object-contain"
           />
           <Image
             src="/location-cession-bail-3.png"
             alt="Home Image"
             width={433}
             height={433}
-            objectFit="contain"
+            className="object-contain"
           />
         </div>
       </section>
@@ -515,8 +447,7 @@ const Page = () => {
             priority
             width={625}
             height={554}
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[554px]"
+            className="w-full h-full xl:max-h-[554px] object-contain"
           />
         </div>
         <motion.div
@@ -532,10 +463,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Entretien et <br /> maintenance
@@ -546,10 +473,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {
@@ -566,10 +489,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -612,10 +531,6 @@ const Page = () => {
                 <motion.h1
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-1"
                 >
                   Service à la clientèle <br />
@@ -627,10 +542,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     className=" max-w-[522px] mt-6"
                   >
                     {
@@ -648,10 +559,6 @@ const Page = () => {
                       <motion.div
                         initial={{ y: "100px", opacity: 0 }}
                         whileInView={{ y: "0px", opacity: 1 }}
-                        transition={{
-                          // type: "spring",
-                          offset: 300,
-                        }}
                         key={index}
                         className="flex items-start space-x-3"
                       >
@@ -682,8 +589,7 @@ const Page = () => {
                 priority
                 width={625}
                 height={334}
-                objectFit="contain"
-                className="w-full max-h-[334px]"
+                className="w-full max-h-[334px] object-contain"
               />
             </div>
           </div>
@@ -701,10 +607,6 @@ const Page = () => {
                 <motion.h1
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className="title-1"
                 >
                   Gestion financière et <br /> comptabilité
@@ -715,10 +617,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     className=" max-w-[522px] mt-6"
                   >
                     {
@@ -738,10 +636,6 @@ const Page = () => {
                       <motion.div
                         initial={{ y: "100px", opacity: 0 }}
                         whileInView={{ y: "0px", opacity: 1 }}
-                        transition={{
-                          // type: "spring",
-                          offset: 300,
-                        }}
                         key={index}
                         className="flex items-start space-x-3"
                       >
@@ -764,10 +658,6 @@ const Page = () => {
                   <motion.p
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                   >
                     {
                       "Travaux de fermeture d’année et vérification par CPA non inclus"
@@ -784,8 +674,7 @@ const Page = () => {
                 alt="Home Image"
                 width={625}
                 height={334}
-                objectFit="contain"
-                className="w-full max-h-[334px]"
+                className="w-full max-h-[334px] object-contain"
               />
             </div>
           </div>
@@ -806,10 +695,6 @@ const Page = () => {
             <motion.p
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className=" font-bold"
             >
               {"Avec SICA, vous bénéficiez de :"}
@@ -824,10 +709,6 @@ const Page = () => {
                 <motion.div
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   key={index}
                   className="flex items-start space-x-3"
                 >
@@ -838,8 +719,7 @@ const Page = () => {
                     alt="check"
                     width={20}
                     height={20}
-                    objectFit="contain"
-                    className="mt-2"
+                    className="mt-2 object-contain"
                   />
                   <span>{item}</span>
                 </motion.div>
@@ -855,8 +735,7 @@ const Page = () => {
             alt="Home Image"
             width={388}
             height={334}
-            objectFit="contain"
-            className=""
+            className="object-contain"
           />
         </div>
       </section>
@@ -878,10 +757,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Obtenez une offre <br /> maintenant
@@ -896,10 +771,7 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
+                className=" max-w-[522px] mt-6"
               >
                 {"SICA est un membre partenaire de la CORPIQ"}
               </motion.p>

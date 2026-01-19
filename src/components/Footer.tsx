@@ -26,8 +26,7 @@ const Footer = () => {
                 alt="SICA Logo White"
                 width={96}
                 height={40}
-                style={{ objectFit: "contain" }}
-                className="h-auto w-auto"
+                className="h-auto w-auto object-contain"
               />
               <p className="mb-2">
                 Locataire, propriétaire ou promoteur : nous sommes toujours là
@@ -42,8 +41,7 @@ const Footer = () => {
                   alt="SICA Logo White"
                   width={96}
                   height={40}
-                  style={{ objectFit: "contain" }}
-                  className="h-auto w-auto"
+                  className="h-auto w-auto object-contain"
                 />
               </div>
             </div>

@@ -23,8 +23,7 @@ const Page = () => {
             priority
             width={625}
             height={787}
-            objectFit="contain"
-            className="w-full h-full xl:h-[716px]"
+            className="w-full h-full xl:h-[716px] object-contain"
           />
         </div>
         <div className="w-full lg:m-auto ">
@@ -32,10 +31,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className=" title-1"
             >
               Entretien ménager
@@ -44,10 +39,6 @@ const Page = () => {
               <motion.h2
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-2 leading-[42px]"
               >
                 Un service de propreté adapté à chaque environnement
@@ -55,10 +46,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="paragraph-1"
               >
                 Chez SICA, la propreté ne se résume pas au nettoyage : elle
@@ -71,10 +58,6 @@ const Page = () => {
             <motion.div
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
             >
               <Button onClick={() => scrollToSection(ref)} variant="secondary">
                 Demander une soumission
@@ -89,10 +72,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Ménage RPA
@@ -100,10 +79,6 @@ const Page = () => {
             <motion.h2
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-2"
             >
               (Résidences pour aînés)
@@ -114,10 +89,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {"Un environnement propre et sécuritaire pour les aînés :"}
@@ -131,10 +102,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -165,8 +132,7 @@ const Page = () => {
             priority
             width={625}
             height={554}
-            objectFit="contain"
-            className="w-full h-full xl:h-[554px]"
+            className="w-full h-full xl:h-[554px] object-contain"
           />
         </div>
       </section>
@@ -179,8 +145,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
           <Image
             src="/entretien-menager.png"
@@ -189,8 +154,7 @@ const Page = () => {
             priority
             width={433}
             height={433}
-            objectFit="contain"
-            className="w-full lg:w-auto h-full"
+            className="w-full lg:w-auto h-full object-contain"
           />
         </div>
         <div className="w-full lg:m-auto">
@@ -198,10 +162,6 @@ const Page = () => {
             <motion.h1
               initial={{ y: "100px", opacity: 0 }}
               whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
               className="title-1"
             >
               Ménage commercial
@@ -212,10 +172,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className=" max-w-[522px] mt-6"
               >
                 {"Pour les entreprises, bureaux et espaces professionnels :"}
@@ -229,10 +185,6 @@ const Page = () => {
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
@@ -263,10 +215,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1 hidden sm:block"
               >
                 Ménage multilogements
@@ -274,10 +222,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1 sm:hidden"
               >
                 Ménage multi- <br />
@@ -289,10 +233,6 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className=" max-w-[522px] mt-6"
                 >
                   {"Entretien complet des parties communes :"}
@@ -306,17 +246,13 @@ const Page = () => {
                     <motion.div
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       key={index}
                       className="flex items-start space-x-3"
                     >
                       <Image
                         src="/list.svg"
                         alt="list"
-                        quality={100} // qualité maximale
+                        quality={100}
                         priority
                         width={16}
                         height={16}
@@ -325,24 +261,11 @@ const Page = () => {
                       <label htmlFor={item} className="">
                         {item}
                       </label>
-                      {/* <span className="text-gray-700 font-medium">{item}</span> */}
                     </motion.div>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
-          <div className=" w-full">
-            <Image
-              src="/menage-multilogement.png"
-              alt="Home Image"
-              quality={100} // qualité maximale
-              priority
-              width={625}
-              height={334}
-              objectFit="contain"
-              className="w-full"
-            />
           </div>
         </div>
         <div className="w-full flex flex-col lg:items-center gap-[68px]">
@@ -351,10 +274,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Ménage résidentiel
@@ -365,34 +284,26 @@ const Page = () => {
                 <motion.p
                   initial={{ y: "100px", opacity: 0 }}
                   whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
                   className=" max-w-[522px] mt-6"
                 >
                   {"Un service personnalisé, selon vos besoins :"}
                 </motion.p>
                 <div className="my-4">
                   {[
-                    "Nettoyage des pièces, salles d’eau, cuisine",
+                    "Nettoyage des pièces, salles d'eau, cuisine",
                     "Balayage, dépoussiérage, désinfection",
                     "Gestion des ordures, tri, rangement",
                   ].map((item, index) => (
                     <motion.div
                       initial={{ y: "100px", opacity: 0 }}
                       whileInView={{ y: "0px", opacity: 1 }}
-                      transition={{
-                        // type: "spring",
-                        offset: 300,
-                      }}
                       key={index}
                       className="flex items-start space-x-3"
                     >
                       <Image
                         src="/list.svg"
                         alt="list"
-                        quality={100} // qualité maximale
+                        quality={100}
                         priority
                         width={16}
                         height={16}
@@ -401,232 +312,44 @@ const Page = () => {
                       <label htmlFor={item} className="">
                         {item}
                       </label>
-                      {/* <span className="text-gray-700 font-medium">{item}</span> */}
                     </motion.div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-          <div className=" w-full">
-            <Image
-              src="/menage-residentiel.png"
-              alt="Home Image"
-              quality={100} // qualité maximale
-              priority
-              width={625}
-              height={334}
-              objectFit="contain"
-              className="w-full "
-            />
-          </div>
-        </div>
-      </section>
-      <section className="flex flex-col-reverse gap-10 xl:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-5 2xl:mx-[44px]">
-        <div className=" w-full ">
-          <Image
-            src="/menage-restaurant.png"
-            alt="Home Image"
-            quality={100} // qualité maximale
-            priority
-            width={433}
-            height={433}
-            objectFit="contain"
-            className="w-full h-full xl:max-h-[554px]"
-          />
-        </div>
-        <div className="w-full m-auto">
-          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
-            <motion.h1
-              initial={{ y: "100px", opacity: 0 }}
-              whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
-              className="title-1"
-            >
-              Ménage pour restaurants
-            </motion.h1>
-
+          <motion.div className="w-full">
             {/* Checklist */}
-            <div className="paragraph-1">
-              <motion.p
-                initial={{ y: "100px", opacity: 0 }}
-                whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
-                className=" max-w-[522px] mt-6"
-              >
-                {"Respect strict des normes d’hygiène alimentaire :"}
-              </motion.p>
-              <div className="mt-4">
+            <div className=" max-w-[555px] lg:m-auto paragraph-1">
+              <div className="mt-4 space-y-4">
                 {[
-                  "Nettoyage de cuisines, aires de préparation",
-                  "Désinfection des surfaces, équipements et zones sensibles",
-                  "Entretien des salles à manger et espaces clients",
+                  "Produits professionnels adaptés à chaque espace",
+                  "Équipe formée, fiable et encadrée",
+                  "Souci du détail et respect des normes de sécurité",
+                  "Flexibilité des horaires selon vos disponibilités",
                 ].map((item, index) => (
                   <motion.div
                     initial={{ y: "100px", opacity: 0 }}
                     whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
                     key={index}
                     className="flex items-start space-x-3"
                   >
                     <Image
-                      src="/list.svg"
-                      alt="list"
-                      quality={100} // qualité maximale
+                      quality={100}
                       priority
-                      width={16}
-                      height={16}
-                      className="mt-2"
+                      src="/check.svg"
+                      alt="check"
+                      width={20}
+                      height={20}
+                      className="mt-2 object-contain"
                     />
-                    <label htmlFor={item} className="">
-                      {item}
-                    </label>
-                    {/* <span className="text-gray-700 font-medium">{item}</span> */}
+                    <span>{item}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-      <section className="flex flex-col gap-10 lg:gap-0 lg:flex-row mt-10 2xl:mt-[215px] xl:mx-5 2xl:mx-[44px]">
-        <div className="w-full m-auto">
-          <div className="max-w-[608px] lg:m-auto space-y-[44px]">
-            <motion.h1
-              initial={{ y: "100px", opacity: 0 }}
-              whileInView={{ y: "0px", opacity: 1 }}
-              transition={{
-                // type: "spring",
-                offset: 300,
-              }}
-              className="title-1"
-            >
-              Ménage après construction
-            </motion.h1>
-
-            {/* Checklist */}
-            <div className="paragraph-1">
-              <motion.p
-                initial={{ y: "100px", opacity: 0 }}
-                whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
-                className=" max-w-[522px] mt-6"
-              >
-                {"Remise à neuf post-travaux :"}
-              </motion.p>
-              <div className="mt-4">
-                {[
-                  "Élimination des débris, poussières et éclaboussures",
-                  "Nettoyage approfondi de toutes les surfaces",
-                  "Lavage des vitres, planchers, lustrage final",
-                ].map((item, index) => (
-                  <motion.div
-                    initial={{ y: "100px", opacity: 0 }}
-                    whileInView={{ y: "0px", opacity: 1 }}
-                    transition={{
-                      // type: "spring",
-                      offset: 300,
-                    }}
-                    key={index}
-                    className="flex items-start space-x-3"
-                  >
-                    <Image
-                      src="/list.svg"
-                      alt="list"
-                      quality={100} // qualité maximale
-                      priority
-                      width={16}
-                      height={16}
-                      className="mt-2"
-                    />
-                    <label htmlFor={item} className="">
-                      {item}
-                    </label>
-                    {/* <span className="text-gray-700 font-medium">{item}</span> */}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" w-full ">
-          <Image
-            src="/menage-construction.png"
-            alt="Home Image"
-            quality={100} // qualité maximale
-            priority
-            width={433}
-            height={433}
-            objectFit="contain"
-            className="w-full h-full lg:max-h-[554px]"
-          />
-        </div>
-      </section>
-      <section className="flex flex-col lg:flex-row mt-10 lg:mt-[215px]   gap-4">
-        <div className=" w-full">
-          <div className=" lg:m-auto lg:w-max space-y-[70px]">
-            <h1 className="title-1 text-primary">Méthodologie SICA</h1>
-            <Image
-              quality={100}
-              priority
-              src="/methodologie-sica.svg"
-              alt="Home Image"
-              width={388}
-              height={334}
-              objectFit="contain"
-              className=""
-            />
-          </div>
-          <div className="h-[12px] bg-primary w-full"></div>
-        </div>
-        <motion.div className="w-full">
-          {/* Checklist */}
-          <div className=" max-w-[555px] lg:m-auto paragraph-1">
-            <div className="mt-4 space-y-4">
-              {[
-                "Produits professionnels adaptés à chaque espace",
-                "Équipe formée, fiable et encadrée",
-                "Souci du détail et respect des normes de sécurité",
-                "Flexibilité des horaires selon vos disponibilités",
-              ].map((item, index) => (
-                <motion.div
-                  initial={{ y: "100px", opacity: 0 }}
-                  whileInView={{ y: "0px", opacity: 1 }}
-                  transition={{
-                    // type: "spring",
-                    offset: 300,
-                  }}
-                  key={index}
-                  className="flex items-start space-x-3"
-                >
-                  <Image
-                    quality={100}
-                    priority
-                    src="/check.svg"
-                    alt="check"
-                    width={20}
-                    height={20}
-                    objectFit="contain"
-                    className="mt-2"
-                  />
-                  <span>{item}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </section>
       <section
         ref={ref}
@@ -638,10 +361,6 @@ const Page = () => {
               <motion.h1
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
                 className="title-1"
               >
                 Prêt à bénéficier de nos services ?
@@ -651,10 +370,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
               >
                 Un espace propre, c’est plus de bien-être, de sécurité et de
                 valeur pour votre immeuble ou votre entreprise. <br /> <br />{" "}
@@ -663,10 +378,6 @@ const Page = () => {
               <motion.p
                 initial={{ y: "100px", opacity: 0 }}
                 whileInView={{ y: "0px", opacity: 1 }}
-                transition={{
-                  // type: "spring",
-                  offset: 300,
-                }}
               >
                 {
                   "Locataire, propriétaire ou promoteur : nous sommes toujours là pour vous"
