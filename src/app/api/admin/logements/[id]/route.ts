@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -14,8 +14,10 @@ export async function GET(
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
 
+    const { id } = await params;
+
     const logement = await prisma.logement.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!logement) {
@@ -37,7 +39,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -46,24 +48,15 @@ export async function PUT(
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
 
+    const { id } = await params;
     const body = await request.json();
 
     const logement = await prisma.logement.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         titre: body.titre,
         description: body.description,
-        adresse: body.adresse,
-        ville: body.ville,
-        codePostal: body.codePostal,
-        prix: parseFloat(body.prix),
-        surface: parseFloat(body.surface),
-        chambres: parseInt(body.chambres),
-        sallesDeBain: parseInt(body.sallesDeBain),
-        type: body.type,
-        statut: body.statut,
-        images: JSON.stringify(body.images || []),
-        caracteristiques: JSON.stringify(body.caracteristiques || []),
+        image: body.image,
       },
     });
 
@@ -79,7 +72,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -88,8 +81,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
     }
 
+    const { id } = await params;
+
     await prisma.logement.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ message: "Logement supprimé avec succès" });

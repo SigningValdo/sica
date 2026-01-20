@@ -1,138 +1,129 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { ArrowLeft, Save, X, Plus, Trash2, Home, Building } from "lucide-react";
+import {
+  ArrowLeft,
+  Save,
+  ImageIcon,
+  FileText,
+  Type,
+  Upload,
+  X,
+  Loader2,
+} from "lucide-react";
 
-interface Logement {
-  id: string;
+interface LogementFormData {
   titre: string;
   description: string;
-  adresse: string;
-  ville: string;
-  codePostal: string;
-  prix: number;
-  surface: number;
-  chambres: number;
-  sallesDeBain: number;
-  type: string;
-  statut: string;
-  images: string;
-  caracteristiques: string;
+  image: string;
+}
+
+interface Logement extends LogementFormData {
+  id: string;
   createdAt: string;
   updatedAt: string;
 }
 
 export default function EditLogementPage() {
-  const [logement, setLogement] = useState<Logement | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const params = useParams();
   const id = params.id as string;
 
-  // Form state
-  const [formData, setFormData] = useState({
-    titre: "",
-    description: "",
-    adresse: "",
-    ville: "",
-    codePostal: "",
-    prix: "",
-    surface: "",
-    chambres: "",
-    sallesDeBain: "",
-    type: "APPARTEMENT",
-    statut: "DISPONIBLE",
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<LogementFormData>({
+    defaultValues: {
+      titre: "",
+      description: "",
+      image: "",
+    },
   });
 
-  const [images, setImages] = useState<string[]>([]);
-  const [caracteristiques, setCaracteristiques] = useState<string[]>([]);
-  const [newImage, setNewImage] = useState("");
-  const [newCaracteristique, setNewCaracteristique] = useState("");
-
+  // Fetch logement data
   useEffect(() => {
     if (id) {
       fetchLogement();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const fetchLogement = async () => {
     try {
       const response = await fetch(`/api/admin/logements/${id}`);
       if (response.ok) {
-        const data = await response.json();
-        setLogement(data);
-
-        // Populate form data
-        setFormData({
+        const data: Logement = await response.json();
+        reset({
           titre: data.titre,
           description: data.description,
-          adresse: data.adresse,
-          ville: data.ville,
-          codePostal: data.codePostal,
-          prix: data.prix.toString(),
-          surface: data.surface.toString(),
-          chambres: data.chambres.toString(),
-          sallesDeBain: data.sallesDeBain.toString(),
-          type: data.type,
-          statut: data.statut,
+          image: data.image,
         });
-
-        // Parse JSON strings
-        setImages(JSON.parse(data.images || "[]"));
-        setCaracteristiques(JSON.parse(data.caracteristiques || "[]"));
+        setImagePreview(data.image);
       } else {
         setError("Logement non trouvé");
       }
-    } catch (error) {
+    } catch {
       setError("Erreur lors du chargement du logement");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  const addImage = () => {
-    if (newImage.trim() && !images.includes(newImage.trim())) {
-      setImages((prev) => [...prev, newImage.trim()]);
-      setNewImage("");
+    setUploadError(null);
+    setUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setUploadError(data.error || "Erreur lors de l'upload");
+        return;
+      }
+
+      setValue("image", data.url);
+      setImagePreview(data.url);
+    } catch {
+      setUploadError("Erreur lors de l'upload du fichier");
+    } finally {
+      setUploading(false);
     }
   };
 
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const addCaracteristique = () => {
-    if (
-      newCaracteristique.trim() &&
-      !caracteristiques.includes(newCaracteristique.trim())
-    ) {
-      setCaracteristiques((prev) => [...prev, newCaracteristique.trim()]);
-      setNewCaracteristique("");
+  const handleRemoveImage = () => {
+    setValue("image", "");
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
   };
 
-  const removeCaracteristique = (index: number) => {
-    setCaracteristiques((prev) => prev.filter((_, i) => i !== index));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: LogementFormData) => {
     setSaving(true);
     setError(null);
 
@@ -142,24 +133,15 @@ export default function EditLogementPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          prix: parseFloat(formData.prix),
-          surface: parseFloat(formData.surface),
-          chambres: parseInt(formData.chambres),
-          sallesDeBain: parseInt(formData.sallesDeBain),
-          images: JSON.stringify(images),
-          caracteristiques: JSON.stringify(caracteristiques),
-        }),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
         router.push(`/admin/logements/${id}`);
       } else {
-        const errorData = await response.json();
-        setError(errorData.message || "Erreur lors de la sauvegarde");
+        setError("Erreur lors de la sauvegarde");
       }
-    } catch (error) {
+    } catch {
       setError("Erreur lors de la sauvegarde");
     } finally {
       setSaving(false);
@@ -168,20 +150,23 @@ export default function EditLogementPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-indigo-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Chargement...</p>
+        </div>
       </div>
     );
   }
 
-  if (error && !logement) {
+  if (error && !imagePreview) {
     return (
-      <div className="p-6">
-        <div className="text-center py-12">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
           <div className="text-red-500 text-lg mb-4">{error}</div>
           <button
             onClick={() => router.push("/admin/logements")}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+            className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors"
           >
             Retour à la liste
           </button>
@@ -191,17 +176,18 @@ export default function EditLogementPage() {
   }
 
   return (
-    <div className="p-6">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
           <button
             onClick={() => router.push(`/admin/logements/${id}`)}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-4"
           >
             <ArrowLeft className="w-5 h-5" />
             Retour au détail
@@ -209,324 +195,226 @@ export default function EditLogementPage() {
           <h1 className="text-3xl font-bold text-gray-900">
             Modifier le logement
           </h1>
-        </div>
+          <p className="mt-2 text-gray-600">
+            Modifiez les informations du logement
+          </p>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Informations principales */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Informations principales
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Titre *
-                </label>
+        <motion.form
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          {/* Image Preview Card */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
+              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                <ImageIcon className="w-5 h-5" />
+                Image du logement
+              </h2>
+            </div>
+            <div className="p-6">
+              {/* Image Preview */}
+              <div className="mb-4">
+                <div className="relative w-full h-64 bg-gray-100 rounded-xl overflow-hidden border-2 border-dashed border-gray-300">
+                  {imagePreview ? (
+                    <>
+                      <img
+                        src={imagePreview}
+                        alt="Aperçu"
+                        className="w-full h-full object-cover"
+                        onError={() => setImagePreview(null)}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemoveImage}
+                        className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full text-gray-400">
+                      {uploading ? (
+                        <>
+                          <Loader2 className="w-16 h-16 mb-2 animate-spin" />
+                          <p className="text-sm">Upload en cours...</p>
+                        </>
+                      ) : (
+                        <>
+                          <ImageIcon className="w-16 h-16 mb-2" />
+                          <p className="text-sm">Aperçu de l&apos;image</p>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Upload Button */}
+              <div className="space-y-4">
                 <input
-                  type="text"
-                  name="titre"
-                  value={formData.titre}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className="hidden"
                 />
-              </div>
+                <input type="hidden" {...register("image")} />
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Type *
-                </label>
-                <select
-                  name="type"
-                  value={formData.type}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={uploading}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-dashed border-indigo-300 text-indigo-600 hover:bg-indigo-50 hover:border-indigo-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="APPARTEMENT">Appartement</option>
-                  <option value="MAISON">Maison</option>
-                  <option value="DUPLEX">Duplex</option>
-                  <option value="LOFT">Loft</option>
-                  <option value="STUDIO">Studio</option>
-                </select>
-              </div>
+                  {uploading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Upload en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="w-5 h-5" />
+                      {imagePreview ? "Changer l'image" : "Choisir une image"}
+                    </>
+                  )}
+                </button>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Statut *
-                </label>
-                <select
-                  name="statut"
-                  value={formData.statut}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="DISPONIBLE">Disponible</option>
-                  <option value="OCCUPE">Occupé</option>
-                  <option value="EN_MAINTENANCE">En maintenance</option>
-                  <option value="RESERVE">Réservé</option>
-                </select>
-              </div>
+                <p className="text-xs text-gray-500 text-center">
+                  Formats acceptés: JPG, PNG, WebP, GIF. Taille max: 5MB
+                </p>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Prix (€) *
-                </label>
-                <input
-                  type="number"
-                  name="prix"
-                  value={formData.prix}
-                  onChange={handleInputChange}
-                  required
-                  min="0"
-                  step="0.01"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
+                {uploadError && (
+                  <p className="text-sm text-red-600 text-center">{uploadError}</p>
+                )}
+
+                {errors.image && (
+                  <p className="text-sm text-red-600 text-center">
+                    {errors.image.message}
+                  </p>
+                )}
               </div>
             </div>
+          </div>
 
-            <div className="mt-6">
+          {/* Title Card */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-4">
+              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                <Type className="w-5 h-5" />
+                Titre du logement
+              </h2>
+            </div>
+            <div className="p-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Titre *
+              </label>
+              <input
+                type="text"
+                {...register("titre", {
+                  required: "Le titre est requis",
+                  minLength: {
+                    value: 5,
+                    message: "Le titre doit contenir au moins 5 caractères",
+                  },
+                })}
+                className={`w-full px-4 py-3 rounded-xl border outline-none ${
+                  errors.titre
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300 focus:ring-indigo-500"
+                } focus:ring-2 focus:border-transparent transition-all text-lg`}
+                placeholder="Ex: 30 LOGEMENTS MODERNES DANS UN IMMEUBLE DE 4 ÉTAGES"
+              />
+              {errors.titre && (
+                <p className="mt-2 text-sm text-red-600">
+                  {errors.titre.message}
+                </p>
+              )}
+              <p className="mt-2 text-xs text-gray-500">
+                Le titre sera affiché en majuscules
+              </p>
+            </div>
+          </div>
+
+          {/* Description Card */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4">
+              <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Description
+              </h2>
+            </div>
+            <div className="p-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Description *
               </label>
               <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-                required
-                rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                {...register("description", {
+                  required: "La description est requise",
+                  minLength: {
+                    value: 20,
+                    message:
+                      "La description doit contenir au moins 20 caractères",
+                  },
+                })}
+                rows={8}
+                className={`w-full px-4 py-3 rounded-xl border outline-none ${
+                  errors.description
+                    ? "border-red-500 focus:ring-red-500"
+                    : "border-gray-300 focus:ring-indigo-500"
+                } focus:ring-2 focus:border-transparent transition-all resize-none`}
+                placeholder="Décrivez le logement en détail..."
               />
-            </div>
-          </div>
-
-          {/* Caractéristiques physiques */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Caractéristiques physiques
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Surface (m²) *
-                </label>
-                <input
-                  type="number"
-                  name="surface"
-                  value={formData.surface}
-                  onChange={handleInputChange}
-                  required
-                  min="0"
-                  step="0.01"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Chambres *
-                </label>
-                <input
-                  type="number"
-                  name="chambres"
-                  value={formData.chambres}
-                  onChange={handleInputChange}
-                  required
-                  min="0"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Salles de bain *
-                </label>
-                <input
-                  type="number"
-                  name="sallesDeBain"
-                  value={formData.sallesDeBain}
-                  onChange={handleInputChange}
-                  required
-                  min="0"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Localisation */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Localisation
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Adresse *
-                </label>
-                <input
-                  type="text"
-                  name="adresse"
-                  value={formData.adresse}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Ville *
-                </label>
-                <input
-                  type="text"
-                  name="ville"
-                  value={formData.ville}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Code postal *
-                </label>
-                <input
-                  type="text"
-                  name="codePostal"
-                  value={formData.codePostal}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Images */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Images</h2>
-            <div className="space-y-4">
-              <div className="flex gap-2">
-                <input
-                  type="url"
-                  value={newImage}
-                  onChange={(e) => setNewImage(e.target.value)}
-                  placeholder="URL de l'image"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={addImage}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              {images.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {images.map((image, index) => (
-                    <div
-                      key={index}
-                      className="relative group aspect-video bg-gray-200 rounded-lg overflow-hidden"
-                    >
-                      <img
-                        src={image}
-                        alt={`Image ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-2 right-2 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
+              {errors.description && (
+                <p className="mt-2 text-sm text-red-600">
+                  {errors.description.message}
+                </p>
               )}
+              <p className="mt-2 text-xs text-gray-500">
+                Les retours à la ligne seront conservés dans l&apos;affichage
+              </p>
             </div>
           </div>
 
-          {/* Caractéristiques */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              Caractéristiques
-            </h2>
-            <div className="space-y-4">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={newCaracteristique}
-                  onChange={(e) => setNewCaracteristique(e.target.value)}
-                  placeholder="Nouvelle caractéristique"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={addCaracteristique}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-
-              {caracteristiques.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {caracteristiques.map((carac, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg"
-                    >
-                      <span className="text-sm">{carac}</span>
-                      <button
-                        type="button"
-                        onClick={() => removeCaracteristique(index)}
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
+          {/* Error Message */}
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-xl">
+              {error}
             </div>
-          </div>
+          )}
 
           {/* Actions */}
-          <div className="flex justify-end gap-4">
+          <div className="flex justify-end gap-4 pt-4">
             <button
               type="button"
               onClick={() => router.push(`/admin/logements/${id}`)}
-              className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
             >
               Annuler
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              className="px-8 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 shadow-lg shadow-indigo-500/25"
             >
               {saving ? (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  Sauvegarde...
+                </>
               ) : (
-                <Save className="w-4 h-4" />
+                <>
+                  <Save className="w-5 h-5" />
+                  Sauvegarder
+                </>
               )}
-              {saving ? "Sauvegarde..." : "Sauvegarder"}
             </button>
           </div>
-
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-              {error}
-            </div>
-          )}
-        </form>
-      </motion.div>
+        </motion.form>
+      </div>
     </div>
   );
 }

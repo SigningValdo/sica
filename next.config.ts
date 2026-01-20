@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840], // Tailles adaptatives
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Tailles pour les icônes
     minimumCacheTTL: 60 * 60 * 24 * 365, // Cache d'un an pour les images optimisées
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "**", // Permet toutes les images externes (à restreindre en production)
+      },
+    ],
   },
 
   // Compression pour réduire la taille des bundles

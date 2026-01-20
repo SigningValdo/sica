@@ -41,17 +41,7 @@ export async function POST(request: NextRequest) {
       data: {
         titre: body.titre,
         description: body.description,
-        adresse: body.adresse,
-        ville: body.ville,
-        codePostal: body.codePostal,
-        prix: parseFloat(body.prix),
-        surface: parseFloat(body.surface),
-        chambres: parseInt(body.chambres),
-        sallesDeBain: parseInt(body.sallesDeBain),
-        type: body.type,
-        statut: body.statut || "DISPONIBLE",
-        images: JSON.stringify(body.images || []),
-        caracteristiques: JSON.stringify(body.caracteristiques || []),
+        image: body.image,
       },
     });
 

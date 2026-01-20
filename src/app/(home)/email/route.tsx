@@ -2,7 +2,7 @@ import { render } from "@react-email/components";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
-import Email from "../../../emails";
+import Email from "@/emails";
 import { ContactData } from "@/components/Formulaire";
 
 // Composant React Email pour confirmation (inchangé mais avec meilleure gestion d'erreur)

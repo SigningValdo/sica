@@ -10,9 +10,39 @@ import { useState, useEffect, useRef } from "react";
 // import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 
+interface Logement {
+  id: string;
+  titre: string;
+  description: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 const Page = () => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(1);
+  const [logements, setLogements] = useState<Logement[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch logements from API
+    const fetchLogements = async () => {
+      try {
+        const response = await fetch("/api/logements");
+        if (response.ok) {
+          const data = await response.json();
+          setLogements(data);
+        }
+      } catch (error) {
+        console.error("Erreur lors du chargement des logements:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLogements();
+  }, []);
 
   useEffect(() => {
     if (!swiperRef.current) return;
@@ -21,10 +51,12 @@ const Page = () => {
       setCurrentIndex(s.realIndex + 1);
     });
   }, []);
+
   const scrollToSection = (ref: RefObject<HTMLDivElement | null>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   const ref = useRef<HTMLDivElement>(null);
+
   return (
     <div className="pt-20 lg:pt-[117px] px-4 xl:px-0">
       <section className="2xl:mr-[52px]">
@@ -67,215 +99,52 @@ const Page = () => {
                   Précédent
                 </Button>
               </div>
-              <p className="-ml-28 text-center">6</p>
+              <p className="-ml-28 text-center">{logements.length}</p>
             </div>
           </div>
           <div>
-            <Swiper
-              slidesPerView={1}
-              breakpoints={{
-                768: {
-                  slidesPerView: 2,
-                },
-              }}
-              spaceBetween={30}
-              onSlideChange={() => console.log(currentIndex)}
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-              className=" w-full"
-              // allowTouchMove={false}
-            >
-              <SwiperSlide>
-                {" "}
-                <div className="">
-                  <Image
-                    src={"/Image - 01.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    className="w-[433px] h-[433px] object-cover"
-                    alt="logement-haut-gamme"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase"
-                    >
-                      Complexe le Baronet
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      23 logements répartie sur 4 étages avec différent type de
-                      3 ½, 4 ½ et 5 ½
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="">
-                  <Image
-                    src={"/Image - 02.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    alt="Gestion 6 logements"
-                    className="w-[433px] h-[433px] object-cover"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase"
-                    >
-                      Complexe le Baronet
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      64 logements répartie sur 4 étages offrant une piscine
-                      extérieure, gym, salle commune et stationnement intérieur
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                {" "}
-                <div className="">
-                  <Image
-                    src={"/Image - 03.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    alt="logement-haut-gamme"
-                    className="w-[433px] h-[433px] object-cover"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase"
-                    >
-                      Établissement Pech
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      77 logements répartie sur 10 étages avec local commercial
-                      et café au rez-de-chaussée
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="">
-                  <Image
-                    src={"/Image - 04.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    alt="Gestion 6 logements"
-                    className="w-[433px] h-[433px] object-cover"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase"
-                    >
-                      Établissement Pech
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      11 logements répartie sur 3 étages avec garage double et
-                      local commercial
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="">
-                  <Image
-                    src={"/Immeuble-exterieur 2.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    alt="Gestion 6 logements"
-                    className="w-[433px] h-[433px] object-cover"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase leading-[22px]"
-                    >
-                      30 logements modernes dans un immeubles de 4 étages
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      L’immeuble Livernois séduit par son architecture
-                      contemporaine raffinée, sa généreuse fenestration, ses
-                      balcons invitants et le choix de matériaux haut de gamme
-                      qui témoignent d’un souci du détail remarquable.
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="">
-                  <Image
-                    src={"/Extérieur-1.jpg"}
-                    height={433}
-                    width={433}
-                    quality={100}
-                    priority
-                    alt="Gestion 6 logements"
-                    className="w-[433px] h-[433px] object-cover"
-                  />
-                  <div className="pt-[33px]">
-                    <motion.h3
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className="title-3 uppercase leading-[22px]"
-                    >
-                      Batiment à 4 niveaux
-                    </motion.h3>
-                    <motion.p
-                      // initial={{ y: "100px", opacity: 0 }}
-                      // whileInView={{ y: "0px", opacity: 1 }}
-                      className=" paragraph-1 "
-                    >
-                      Rez-de-chaussée commercial (restaurants, cafés, services)
-                      + 24 studios répartis aux 2e, 3e et 4e étages.
-                      <br />
-                      <span>Style Contemporain, sobre et raffiné.</span>
-                      <br />
-                      <span>
-                        Situé au 1785 chemin de la Canardière, dans le quartier
-                        Limoilou
-                      </span>
-                    </motion.p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            {loading ? (
+              <div className="flex items-center justify-center h-[433px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+              </div>
+            ) : (
+              <Swiper
+                slidesPerView={1}
+                breakpoints={{
+                  768: {
+                    slidesPerView: 2,
+                  },
+                }}
+                spaceBetween={30}
+                onSlideChange={() => console.log(currentIndex)}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                className=" w-full"
+              >
+                {logements.map((logement) => (
+                  <SwiperSlide key={logement.id}>
+                    <div className="">
+                      <Image
+                        src={logement.image}
+                        height={433}
+                        width={433}
+                        quality={100}
+                        priority
+                        className="w-[433px] h-[433px] object-cover"
+                        alt={logement.titre}
+                      />
+                      <div className="pt-[33px]">
+                        <motion.h3 className="title-3 uppercase leading-[22px]">
+                          {logement.titre}
+                        </motion.h3>
+                        <motion.p className="paragraph-1 whitespace-pre-line">
+                          {logement.description}
+                        </motion.p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
           </div>
 
           <div className="flex md:hidden flex-col pt-10 gap-10">
@@ -297,7 +166,7 @@ const Page = () => {
                 Précédent
               </Button>
             </div>
-            <p className="-ml-28 text-center">6</p>
+            <p className="-ml-28 text-center">{logements.length}</p>
           </div>
         </div>
       </section>
@@ -335,10 +204,10 @@ const Page = () => {
               whileInView={{ y: "0px", opacity: 1 }}
               className="title-2 leading-[42px]"
             >
-              Parce qu’on ne fait pas que gérer : <br />
+              Parce qu'on ne fait pas que gérer : <br />
               on optimise, on anticipe et on valorise votre bien. <br /> <br />{" "}
-              Notre offre s’adresse aux propriétaires de multilogements,
-              d’immeubles commerciaux ou résidentiels, qui veulent un service
+              Notre offre s'adresse aux propriétaires de multilogements,
+              d'immeubles commerciaux ou résidentiels, qui veulent un service
               complet, structuré et transparent.
             </motion.div>
             <motion.div
@@ -476,7 +345,7 @@ const Page = () => {
                 className=" max-w-[522px] mt-6"
               >
                 {
-                  "Fini les appels d’urgence à toute heure. SICA coordonne et supervise tous les travaux nécessaires :"
+                  "Fini les appels d'urgence à toute heure. SICA coordonne et supervise tous les travaux nécessaires :"
                 }
               </motion.p>
               <div className="mt-4">
@@ -545,7 +414,7 @@ const Page = () => {
                     className=" max-w-[522px] mt-6"
                   >
                     {
-                      "SICA s’assure que vos locataires soient servis rapidement et que vous restiez informé sans vous occuper des détails :"
+                      "SICA s'assure que vos locataires soient servis rapidement et que vous restiez informé sans vous occuper des détails :"
                     }
                   </motion.p>
                   <div className="mt-4">
@@ -660,7 +529,7 @@ const Page = () => {
                     whileInView={{ y: "0px", opacity: 1 }}
                   >
                     {
-                      "Travaux de fermeture d’année et vérification par CPA non inclus"
+                      "Travaux de fermeture d'année et vérification par CPA non inclus"
                     }
                   </motion.p>
                 </div>
@@ -704,7 +573,7 @@ const Page = () => {
                 "Un service centralisé et structuré",
                 "Une équipe réactive et expérimentée",
                 "Des outils numériques pour un suivi en temps réel",
-                "La tranquillité d’esprit d’un immeuble bien géré",
+                "La tranquillité d'esprit d'un immeuble bien géré",
               ].map((item, index) => (
                 <motion.div
                   initial={{ y: "100px", opacity: 0 }}

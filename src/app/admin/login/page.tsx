@@ -139,14 +139,6 @@ export default function AdminLogin() {
               </button>
             </div>
           </form>
-
-          <div className="mt-6">
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                Identifiants de test : admin@sica.com / admin123
-              </p>
-            </div>
-          </div>
         </motion.div>
       </div>
     </div>
