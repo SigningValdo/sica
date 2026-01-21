@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Building2,
   Plus,
@@ -10,6 +10,8 @@ import {
   Edit,
   Trash2,
   Calendar,
+  X,
+  AlertTriangle,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -25,6 +27,11 @@ export default function LogementsList() {
   const [logements, setLogements] = useState<Logement[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [deleteModal, setDeleteModal] = useState<{
+    isOpen: boolean;
+    logement: Logement | null;
+  }>({ isOpen: false, logement: null });
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     fetchLogements();
@@ -44,18 +51,40 @@ export default function LogementsList() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (confirm("Êtes-vous sûr de vouloir supprimer ce logement ?")) {
-      try {
-        const response = await fetch(`/api/admin/logements/${id}`, {
+  const openDeleteModal = (logement: Logement) => {
+    setDeleteModal({ isOpen: true, logement });
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModal({ isOpen: false, logement: null });
+  };
+
+  const handleDelete = async () => {
+    if (!deleteModal.logement) return;
+
+    setDeleting(true);
+    try {
+      const response = await fetch(
+        `/api/admin/logements/${deleteModal.logement.id}`,
+        {
           method: "DELETE",
-        });
-        if (response.ok) {
-          setLogements(logements.filter((l) => l.id !== id));
         }
-      } catch (error) {
-        console.error("Erreur lors de la suppression:", error);
+      );
+
+      if (response.ok) {
+        setLogements(
+          logements.filter((l) => l.id !== deleteModal.logement!.id)
+        );
+        closeDeleteModal();
+      } else {
+        const error = await response.json();
+        alert(error.error || "Erreur lors de la suppression");
       }
+    } catch (error) {
+      console.error("Erreur lors de la suppression:", error);
+      alert("Erreur lors de la suppression du logement");
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -193,7 +222,7 @@ export default function LogementsList() {
                         <Edit className="h-5 w-5" />
                       </Link>
                       <button
-                        onClick={() => handleDelete(logement.id)}
+                        onClick={() => openDeleteModal(logement)}
                         className="p-2 bg-white/90 backdrop-blur-sm rounded-lg text-red-600 hover:bg-white transition-colors"
                         title="Supprimer"
                       >
@@ -237,6 +266,105 @@ export default function LogementsList() {
           )}
         </motion.div>
       </div>
+
+      {/* Modal de confirmation de suppression */}
+      <AnimatePresence>
+        {deleteModal.isOpen && deleteModal.logement && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            onClick={closeDeleteModal}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="relative bg-gradient-to-r from-red-500 to-red-600 px-6 py-8 text-white">
+                <button
+                  onClick={closeDeleteModal}
+                  className="absolute top-4 right-4 p-1 rounded-full hover:bg-white/20 transition-colors"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-white/20 rounded-full">
+                    <AlertTriangle className="h-8 w-8" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold">
+                      Confirmer la suppression
+                    </h2>
+                    <p className="text-red-100 text-sm mt-1">
+                      Cette action est irréversible
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-start gap-4 mb-6">
+                  {deleteModal.logement.image && (
+                    <img
+                      src={deleteModal.logement.image}
+                      alt={deleteModal.logement.titre}
+                      className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                    />
+                  )}
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      {deleteModal.logement.titre}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                      {deleteModal.logement.description}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-sm mb-6">
+                  Êtes-vous sûr de vouloir supprimer ce logement ? Cette action
+                  supprimera définitivement toutes les données associées.
+                </p>
+
+                {/* Actions */}
+                <div className="flex gap-3">
+                  <button
+                    onClick={closeDeleteModal}
+                    disabled={deleting}
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-200 text-gray-700 font-medium hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    disabled={deleting}
+                    className="flex-1 px-4 py-3 rounded-xl bg-red-600 text-white font-medium hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    {deleting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                        Suppression...
+                      </>
+                    ) : (
+                      <>
+                        <Trash2 className="h-4 w-4" />
+                        Supprimer
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
