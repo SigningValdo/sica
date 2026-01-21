@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
+// Désactiver le cache pour toujours avoir les données fraîches
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 // API publique pour récupérer les logements (côté public)
 export async function GET() {
   try {
